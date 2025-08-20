@@ -1,0 +1,417 @@
+\chapter{Aug.~20 --- Algebras and Modules}
+
+\section{More on Algebras and Modules}
+\begin{definition}
+  A \emph{free} module is a module
+  which has a basis.
+\end{definition}
+
+\begin{example}
+  Consider the coordinate module
+  $A^{\oplus I}$. Then a basis is given
+  by $e_i = \{\delta_{ij}\}_{j \in I}$
+    for $i \in I$.
+\end{example}
+
+\begin{prop}
+  Let $M$ be a left $A$-module. Let
+  $I$ be an index set and let $m_i \in M$
+  for $i \in I$. Then
+  \begin{enumerate}
+    \item There exists a unique $A$-linear
+      map $A^{\oplus I} \to M$ which sends
+      $e_i \mapsto m_i$.
+    \item This map is surjective if and only
+      if the elements $m_i$ span $M$.
+      In particular, every $M$ is isomorphic
+      to a quotient of a free module.
+    \item This map is an isomorphism
+      if and only if $\{m_i\}$
+      form a basis of $M$. In particular,
+      every coordinate module is a
+      free module.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  Left as an exercise.
+\end{proof}
+
+\begin{example}
+  Suppose $M$ is spanned by a single
+  element $m$. Then $M \cong A / I$,
+  where $I$ is the left ideal
+  \[
+    I = \{a \in A : am = 0\}.
+  \]
+\end{example}
+
+\begin{example}
+  We can now construct the following
+  examples of algebras:
+  \begin{enumerate}
+    \item Let $\Mat_n(A)$ be the
+      set of $n \times n$ matrices with
+      entries in $A$. If $A$ is a
+      $k$-algebra, then $\Mat_n(A)$
+      is also a $k$-algebra.
+    \item If $G$ is a group, then the
+      group algebra $kG$ (for a ring $k$)
+      given by
+      \[
+        kG = \left\{\sum_{g \in G} a_g g : a_g \in k\right\}
+      \]
+      is a free module with basis identified
+      with the elements of $G$.
+
+      The importance of of this
+      object is as follows: Let $G$
+      be a group and $B$ an algebra.
+      Consider the set of maps satisfying
+      $1_G \mapsto 1_B$ and respecting
+      the group multiplication. This
+      set is in bijection with maps
+      $kG \to B$ (they extend by linearity).
+      If $V$ is a vector space and
+      $B = \End(V)$, then this statement
+      says that there is a bijection
+      between the representations of the
+      group $G$
+      and the representations of the group
+      algebra $kG$.
+    \item If $I$ is a two-sided ideal, then
+      $A / I$ has a natural algebra
+      structure.
+    \item If $A_1, A_2$ are $k$-algebras,
+      then the direct sum
+      $A_1 \oplus A_2$ is again a
+      $k$-algebra (with component-wise multiplication).
+      One can extend this by induction to
+      a finite direct sum, but note that
+      we lose
+      the multiplicative identity in
+      an infinite direct sum (so we
+      do not get an algebra in the infinite
+      case).
+  \end{enumerate}
+\end{example}
+
+\section{Module of Homomorphisms}
+\begin{definition}
+  Let $k$ be a commutative ring and
+  $A$ a $k$-algebra. Let $M, N$ be
+  left $A$-modules. Denote by
+  $\Hom_A(M, N)$ the set of all
+  $A$-module homomorphisms $M \to N$.
+  Give $\Hom_A(M, N)$ a $k$-module
+  structure via
+  \[
+    [\varphi_1 + \varphi_2](m) = \varphi_1(m) + \varphi_2(m), \quad
+    [r \varphi](m) = r \varphi(m)
+  \]
+  for $\varphi_1, \varphi_2 \in \Hom_A(M, N)$,
+  $r \in k$, and $m \in M$.
+\end{definition}
+
+\begin{remark}
+  Let $L, M, N$ be left $A$-modules. Then
+  we can define a $k$-bilinear map
+  \begin{align*}
+    \Hom_A(M, N) \times \Hom_A(L, M) &\longrightarrow \Hom_A(L, N) \\
+    (\varphi, \psi) &\longmapsto \varphi \circ \psi.
+  \end{align*}
+\end{remark}
+
+\begin{exercise}
+  Let $N_2$ be an $A$-module,
+  $N_1 \subseteq N_2$ an $A$-submodule,
+  and $N_3 = N_2 / N_1$. Let
+  $i : N_1 \hookrightarrow N_2$ be the
+  inclusion and $\pi : N_2 \to N_3$ the
+  projection. Define the maps
+  \begin{align*}
+    \widetilde{\iota} : \Hom(M, N_1) &\rightarrow \Hom(M, N_2) \\
+    \varphi_1 &\longmapsto i \circ \varphi_1 \\
+    \widetilde{\pi} : \Hom(M, N_2) &\rightarrow \Hom(M, N_3) \\
+    \varphi_2 &\longmapsto \pi \circ \varphi_2.
+  \end{align*}
+  Then show that $\widetilde{\iota}$
+  is injective and $\im \widetilde{\iota} = \ker \widetilde{\pi}$.
+\end{exercise}
+
+\begin{remark}
+  Let $B$ be a $k$-algebra and $M$ and
+  $A$-$B$-bimodule. Then for all
+  $A$-modules $N$, we have that
+  $\Hom_A(M, N)$
+  is a left $B$-module via
+  \[
+    [b \varphi](m) = \varphi(mb).
+  \]
+  Similarly, if $N$ is an
+  $A$-$C$-bimodule, then
+  $\Hom_A(M, N)$ is a right $C$-module
+  via
+  \[
+    [\varphi c](m) = \varphi(m)c.
+  \]
+  So if $M$ is an $A$-$B$-bimodule
+  and $N$ an $A$-$C$-bimodule,
+  then $\Hom_A(M, N)$ is a $B$-$C$-bimodule.
+\end{remark}
+
+\begin{remark}
+  Let $M$ be a left $A$-module.
+  We write $\End_A(M)$ in place of
+  $\Hom_A(M, M)$, and composition gives
+  $\End_A(M)$ the structure of a
+  $k$-algebra. If $M = A^{\oplus n}$,
+  then we can identify
+  \[
+    \End_A(M) = \Mat_n(A^{\mathrm{opp}}),
+  \]
+  where the opposite algebra exchanges
+  the order of multiplication in the
+  original algebra (this is because
+  $\End_A(M)$ must respect the action by
+  $A$). Then
+  $M$ becomes an
+  $A$-$(\Mat_n(A))^{\mathrm{opp}}$-bimodule.
+\end{remark}
+
+\begin{remark}
+  If $M, N$ are two left $A$-modules, then
+  $\Hom_A(M, N)$ 
+  is an $\End_A(N)$-$\End_A(M)$-bimodule
+  (by taking into account compositions).
+\end{remark}
+
+\section{Tensor Product of Modules}
+
+\begin{remark}
+  Let $A$ be a $k$-algebra,
+  $M$ a right $A$-module, and $N$ a
+  left $A$-module. We want to produce
+  a $k$-module $M \otimes_A N$, which
+  will be the \emph{tensor product} of
+  $M$ and $N$ over $A$.
+\end{remark}
+
+\begin{definition}
+  Let $L$ be a $k$-module. We say that
+  a map $\varphi : M \times N \to L$
+  is \emph{$A$-bilinear} if it is $k$-linear
+  in both arguments and satisfies
+  \[
+    \varphi(ma, n) = \varphi(m, an)
+  \]
+  for any $a \in A$, $m \in M$, and
+  $n \in N$.
+\end{definition}
+
+\begin{definition}[Universal property of the tensor product]
+  There is an $A$-bilinear map
+  \begin{align*}
+    M \times N &\longrightarrow M \otimes_A N \\
+    (m, n) &\longmapsto m \otimes n
+  \end{align*}
+  such that for any $A$-bilinear map
+  $\varphi : M \times N \to L$, there
+  exists a unique $k$-linear map
+  $\psi : M \otimes_A N \to L$ such that
+  $\varphi(m, n) = \psi(m \otimes n)$.
+  As a diagram, this says that
+  \begin{center}
+  \begin{tikzcd}
+    M \times N \ar[rr, "{(m, n) \mapsto m \otimes n}"] \ar[dr, "\varphi", swap] & & M \otimes_A N \ar[dl, "\psi"] \\
+    & L
+  \end{tikzcd}
+  \end{center}
+\end{definition}
+
+\begin{exercise}
+  If we choose $M \otimes'_A N$ with
+  bilinear map $(m, n) \mapsto m \otimes' n$,
+  then there exists a unique isomorphism
+  $i : M \otimes_A N \to M \otimes'_A N$
+  given by $i(m \otimes n) = m \otimes' n$.
+\end{exercise}
+
+\begin{corollary}
+  Assume $M \otimes_A N$ satisfies
+  the universal property. Then
+  $\{m \otimes n\}$ span $M \otimes_A N$.
+\end{corollary}
+
+\begin{theorem}
+  The tensor product $M \otimes_A N$
+  exists for all right $A$-modules $M$
+  and left $A$-modules $N$.
+\end{theorem}
+
+\begin{proof}
+  We sketch the proof. First take
+  $M$ to be free. Then we can define
+  $M \otimes_A N$ as $N^{\oplus I}$,
+  where we have
+  $(e_i a_i) \otimes n = (a_i n)_{i \in I}$.
+  The universal property is easy to check
+  for this case, and the general
+  case can be done by writing $M$ as
+  a quotient of a free module.
+\end{proof}
+
+\begin{example}
+  If $M, N$ are both free and
+  $\{e_i\}_{i \in I}$, $\{f_j\}_{j \in J}$
+  are bases of $M, N$, respectively,
+  then $M \otimes_A N$ is a free
+  $k$-module with basis vectors
+  $\{e_i \otimes f_j\}_{i \in I, j \in J}$.
+\end{example}
+
+\begin{exercise}
+  Let $M = A / I$, where $I$ is a right
+  ideal. Show that
+  $M \otimes_A N = N / IN$. Find out
+  what happens when $N = A / J$, where
+  $J$ is a left ideal, what can you say
+  about $M \otimes_A N$ in terms of
+  $A, I, J$?
+\end{exercise}
+
+\begin{prop}
+  Assume $B$ is a $k$-algebra and
+  $M$ a $B$-$A$-module. Then
+  $M \otimes_A N$ is a left $B$-module.
+\end{prop}
+
+\begin{proof}
+  Define $\varphi_b : M \times N \to M \otimes_A N$
+  by $(m, n) \mapsto bm \otimes n$.
+  This is bilinear, so by the universal
+  property, there exists
+  $\psi_b : M \otimes_A N \to M \otimes_A N$
+  such that $\psi_b(m \otimes n) = bm \otimes n$, which gives
+  the $B$-action.
+\end{proof}
+
+\begin{definition}
+  Let $L$ be a $B$-module. A map
+  $\varphi : M \times N \to L$ is
+  called \emph{$B$-$A$-linear} if it
+  is $k$-linear in both arguments and
+  \[
+    \varphi(ma, n) = \varphi(m, an), \quad
+    \varphi(bm, n) = b \varphi(m, n)
+  \]
+  for all $m \in M$, $n \in N$, $b \in B$,
+  and $a \in A$.
+\end{definition}
+
+\begin{prop}
+  The left $B$-module $M \otimes_A N$
+  has the following universal property:
+  \begin{quote}
+    Let $L$ be any left $B$-module
+    and $\varphi : M \times N \to L$
+    a $B$-$A$-linear map. Then there
+    exists a unique $B$-linear map
+    $\psi : M \otimes_A N \to L$
+    such that $\psi(m \otimes n) = \varphi(m, n)$.
+  \end{quote}
+\end{prop}
+
+\begin{example}
+  Let $A_1, A_2$ be $k$-algebras. Then
+  \begin{enumerate}
+    \item $A_1 \otimes_k A_2$ has
+      the structure of a $k$-algebra via
+      \[
+        (a_1 \otimes a_2)(b_1 \otimes b_2) = (a_1 b_1) \otimes (a_2 b_2),
+      \]
+      where $1 \otimes 1$ is a unit element.
+    \item Let $M_i$ be a left $A_i$-module
+      for $i = 1, 2$. Then
+      $M_1 \otimes_k M_2$ is a module
+      for $A_1 \otimes_k A_2$.
+  \end{enumerate}
+\end{example}
+
+\section{Tensor-Hom Adjunction}
+\begin{prop}[Tensor-Hom adjunction]
+  Let $A, B$ be associative algebras,
+  $N$ a $B$-module, $M$ an $A$-module,
+  and $L$ an $A$-$B$-bimodule. Then
+  \begin{enumerate}
+    \item $L \otimes_B N$ is an
+      $A$-module;
+    \item $\Hom_A(L, M)$ is a
+      $B$-module.
+  \end{enumerate}
+  Moreover, there is a natural
+  $k$-linear isomorphism
+  \[
+    \Hom_A(L \otimes_B N, M) \overset{\cong}{\longrightarrow} \Hom_B(N, \Hom_A(L, M)).
+  \]
+\end{prop}
+
+\begin{proof}
+  By the universal property, there is a
+  natural map
+  \[
+    \Hom_A(L \otimes_B N, M)
+    \overset{\cong}{\longrightarrow} \Bilin_{A, B}(L \times N, M).
+  \]
+  So it suffices to find
+  \begin{align*}
+    \Hom_B(N, \Hom_A(L, M))
+    &\overset{\cong}{\longrightarrow} \Bilin_{A, B}(L \times N, M) \\
+    f &\longmapsto \varphi_f.
+  \end{align*}
+  Construct this map by
+  $\psi_f(e, n) = [f(n)](e)$, with
+  inverse $h \mapsto \psi(\cdot, h)$
+  for $\psi \in \Bilin_{A, B}(L \times N, M)$.
+\end{proof}
+
+\begin{example}
+  If we have an algebra homomorphism
+  $B \to A$, where $A$ is a
+  an $A$-$B$-bimodule. One can
+  show as an exercise that
+  $\Hom_A(A, M)$ is naturally identified
+  with $M$ as an $A$-module and $B$-module.
+  Thus by the Tensor-Hom adjunction,
+  we have a natural isomorphism
+  \[
+    \Hom_A(A \otimes_B N, M)
+    \overset{\cong}{\longrightarrow}
+    \Hom_B(N, M).
+  \]
+\end{example}
+
+\begin{definition}
+  The $A$-module $A \otimes_B N$ is
+  said to be \emph{induced} from $N$.
+\end{definition}
+
+\begin{remark}
+  Assume there is
+  $\Hom$ from $A \to B$. Then $B$
+  is an $A$-$B$-bimodule. Take it as $L$
+  in the Tensor-Hom adjunction.
+  Note that $B \otimes_B N \cong N$
+  as $A$-modules, and we have a natural
+  isomorphism
+  \[
+    \Hom_A(N, M)
+    \overset{\cong}{\longrightarrow}
+    \Hom_B(N, \Hom_A(B, M)).
+  \]
+\end{remark}
+
+\begin{definition}
+  The $B$-module $\Hom_A(B, M)$ is
+  said to be \emph{coinduced} from $M$.
+\end{definition}
