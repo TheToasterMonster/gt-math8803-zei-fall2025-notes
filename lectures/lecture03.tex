@@ -1,0 +1,390 @@
+\chapter{Aug.~25 --- Representations}
+
+\section{Reducibility of Modules}
+
+\begin{remark}
+  Consider an associative algebra
+  $A$ over a field $\F$. We proceed
+  to study completely reducible
+  representations of $A$.
+  Let $U$ be an $A$-module.
+\end{remark}
+
+\begin{definition}
+  An $A$-module $U$ is \emph{irreducible}
+  if it only has two distinct submodules
+  ($\{0\}$ and $U$).
+\end{definition}
+
+\begin{remark}
+  With this definition, $\{0\}$ is
+  not irreducible.
+\end{remark}
+
+\begin{definition}
+  An $A$-module $U$ is \emph{completely reducible}
+  if for any submodule $U' \subseteq U$,
+  there exists an $A$-submodule
+  $U''$ such that $U = U' \oplus U''$.
+\end{definition}
+
+\begin{exercise}
+  Show that any submodule and any quotient
+  module of a completely reducible
+  $A$-module is also completely reducible.
+\end{exercise}
+
+\begin{example}
+  Consider $A = \End_\F(U)$. Then $U$ is
+  an $A$-module and is irreducible
+  (there is a linear operator
+  $\alpha : U \to U$ taking
+  $u \mapsto v$ for any $u, v \in U$, so
+  there are no nontrivial invariant
+  subspaces).
+\end{example}
+
+\begin{prop}
+  Let $U_1, U_2$ be completely reducible
+  $A$-modules. Then $U_1 \oplus U_2$ is
+  completely reducible.
+\end{prop}
+
+\begin{proof}
+  Left as an exercise.
+\end{proof}
+
+\begin{corollary}
+  Let $U$ be a finite-dimensional
+  $A$-module. Then the following are
+  equivalent:
+  \begin{enumerate}
+    \item $U$ is completely reducible;
+    \item $U$ is isomorphic to a direct
+      sum of irreducible submodules.
+  \end{enumerate}
+\end{corollary}
+
+\begin{exercise}
+  Show that every irreducible $A$-module is
+  isomorphic to a quotient
+  module for a regular module (i.e. one
+  isomorphic to $A$).
+  In particular, every irreducible module
+  over a finite-dimensional associative
+  $\F$-algebra is finite-dimensional.
+\end{exercise}
+
+\section{Schur's Lemma}
+\begin{theorem}[Schur's lemma]
+  Let $A$ be an associative $\F$-algebra
+  and $U, V$ irreducible $A$-modules.
+  Then
+  \begin{enumerate}
+    \item if $U, V$ are not
+      isomorphic, then
+      $\Hom_A(U, V) = 0$;
+    \item $\End_A(U)$ is a skew
+      field (i.e. a division ring).
+      Furthermore, if
+      $U$ is finite-dimensional
+      and $\F$ is algebraically closed, then
+      $\dim \End_A(U) = 1$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  $(1)$ Assume we have a nonzero homomorphism
+  $\varphi : U \to V$. Then
+  $\ker \varphi \subsetneq U$, and
+  $\im \varphi \subseteq V$ is
+  nontrivial, so by irreducibility
+  $\varphi$ must be an isomorphism.
+
+  $(2)$ Let $\varphi \in \End_A(U)$
+  From $(1)$, we know that
+  $\varphi$ is an isomorphism, so
+  $\varphi$ has an inverse, i.e.
+  $\End_A(U)$ is a skew field.
+  For the second part, since
+  $\F$ is algebraically closed, we can
+  find an eigenvalue $z$ for $\varphi$.
+  Then $\varphi - z \id_U$ is not
+  invertible, so we have
+  $\varphi - z \id_U = 0$ by $(1)$.
+\end{proof}
+
+\begin{exercise}
+  Consider $1, i, j, k$, where
+  $i^2 = j^2 = k^2 = -1$ and
+  $ij = -ji = k$. The
+  \emph{quaternion algebra} over $\R$ is
+  given by
+  \[
+    \mathbb{H}_\R
+    = \{q = w + xi + yj + zk : w, x, y, z \in \R\}
+  \]
+  Note that $\overline{q} = w - xi - yj - zk$
+  satisfies
+  $q \overline{q} = w^2 + x^2 + y^2 + z^2$,
+  so $q^{-1} = \overline{q} / (w^2 + x^2 + y^2 + z^2)$, i.e.
+  $\mathbb{H}_\R$ is a skew field.
+  Show that
+  $\End_{\mathbb{H}_\R}(\mathbb{H}_\R) \cong \mathbb{H}_\R^\mathrm{opp}$.
+\end{exercise}
+
+\begin{remark}
+  We have an embedding
+  $\mathbb{H}_\R \hookrightarrow \Mat_2(\C)$
+  given by
+  \[
+    q \longmapsto
+    \begin{pmatrix}
+      w + xi & y + zi \\
+      -y + zi & w - xi
+    \end{pmatrix}.
+  \]
+  If we replace $\R$ with $\C$, then
+  $\mathbb{H}_\C \cong \Mat_2(\C)$,
+  which is reducible (consider the sum of
+  column spaces).
+\end{remark}
+
+\begin{definition}
+  Let $U$ be an $A$-module. We say that
+  $U$ is \emph{endotrivial} if
+  $\End_A(U)$ consists only of scalar maps,
+  i.e. maps of the form $z \id$.
+\end{definition}
+
+\begin{remark}
+  Suppose $\F$ is algebraically closed and
+  uncountable (e.g. $\C$), $A$ has
+  countable dimension over $\F$, and
+  $U$ an irreducible $A$-module. Then
+  $U$ is endotrivial.
+\end{remark}
+
+\begin{definition}
+  Define the \emph{center} of $A$ to be
+  \[
+    \mathcal{Z}(A) = \{z \in A : za = az \emph{for all } a \in A\}.
+  \]
+  Note that this is a commutative algebra.
+\end{definition}
+
+\begin{exercise}
+  Schur's lemma gives a description of
+  the center of $A$.
+  Let $U$ be an endotrivial $A$-module
+  (e.g. a finite-dimensional module over
+  if $\F$ is algebraically closed).
+  Show that $z \in \mathcal{Z}(A)$ 
+  acts as a scalar on $U$. We call the
+  algebra homomorphism
+  $\mathcal{Z}(A) \to \F$ the
+  \emph{central character} of $U$.
+\end{exercise}
+
+\section{Completely Reducible Representations}
+
+\begin{remark}
+  Consider finite direct sums of
+  endotrivial irreducible modules:
+  \[
+    \bigoplus_{i = 1}^k U_i \otimes M_i,
+  \]
+  where the $U_i$ are endotrivial
+  modules and the $M_i$ are
+  vector spaces known as
+  \emph{multiplicity spaces}. Note that
+  $U_1^{\oplus i} = U_1 \otimes \F^i$.
+  The
+  $A$-action on the direct sum for
+  $a \in A$ is given by
+  \[
+    a(u_1 \otimes m_1, \dots, u_k \otimes m_k)
+    = (au_1 \otimes m_1, \dots, au_k \otimes m_k).
+  \]
+  We will use Schur's lemma to understand
+  homomorphisms between such modules.
+
+  Write $U^j = \bigoplus_{i = 1}^k U_i \otimes M_i^j$
+  for $j = 1, 2$. We can produce a linear
+  map
+  \[
+    \bigoplus_{i = 1}^k \Hom_\F(M_i^1, M_i^2)
+    \longrightarrow \Hom_A(U^1, U^2)
+  \]
+  in the following manner:
+  For $\underline{\varphi} = (\varphi_1, \dots, \varphi_k) \in \bigoplus_{i = 1}^k \Hom_\F(M_i^1, M_i^2)$,
+  we can define
+  \[
+    \psi_{\underline{\varphi}}\left(
+      \sum_{i = 1}^k u_i \otimes m_i^1
+    \right)
+    = \sum_{i = 1}^k u_i \otimes \varphi_i(m_i^1).
+  \]
+\end{remark}
+
+\begin{theorem}
+  We have the following:
+  \begin{enumerate}
+    \item The map $\underline{\varphi} \mapsto \psi_{\underline{\varphi}}$
+      defines a vector space isomorphism
+      \[
+        \bigoplus_{i = 1}^k \Hom_\F(M_i^1, M_i^2)
+        \overset{\cong}\longrightarrow \Hom_A(U^1, U^2).
+      \]
+    \item Every $A$-module homomorphism
+      $U_1 \to U_2$ sends
+      $U_i \otimes M_i^1$ to
+      $U_i \otimes M_i^2$ for any $i$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Left as an exercise (use Schur's lemma).
+\end{proof}
+
+\begin{corollary}\label{cor:hom-isomorphism}
+  We have the following:
+  \begin{enumerate}
+    \item there is an isomorphism
+      $\Hom_A(U_i, U) \xrightarrow{\cong} M_i$;
+    \item there is an isomorphism
+      $\bigoplus_{i = 1}^k U_i \otimes \Hom_A(U_i, U) \cong U$
+      given by
+      \[
+        \sum_{i = 1}^k u_i \otimes \varphi_i
+        \longmapsto \sum_{i = 1}^k \varphi_i(u_i).
+      \]
+  \end{enumerate}
+\end{corollary}
+
+\begin{prop}\label{prop:submodule-collection}
+  For any $A$-submodule $U' \subseteq U$,
+  there exists a unique collection of
+  determined subspaces $M_i' \subseteq M_i$
+  such that
+  $U' = \bigoplus_{i = 1}^k U_i \otimes M_i'$
+  as submodules of $U$.
+\end{prop}
+
+\begin{proof}
+  Note that $\Hom_A(U_i, U') \subseteq \Hom_A(U_i, U)$,
+  set $M_i' = \Hom_A(U_i, U')$,
+  and use Corollary \ref{cor:hom-isomorphism}.
+\end{proof}
+
+\begin{theorem}
+  Let $U_i$ be irreducible modules for
+  $A$ and consider maps
+  $\beta_i : A \to \End_\F(U_i)$. Set
+  \[
+    \beta = \beta_1 \oplus \cdots \oplus \beta_k : A \longrightarrow \bigoplus_{i = 1}^k \End_\F(U_i),
+  \]
+  where the $U_i$ are pairwise
+  non-isomorphic. Then the
+  homomorphism $\beta$ is surjective.
+\end{theorem}
+
+\begin{proof}
+  Replace $A$ by $A /{\ker \beta}$, so that
+  $\beta$ is injective. Then
+  $\beta$ equips $\bigoplus_{i = 1}^k \End(U_i)$
+  with an $A$-bimodule structure, and
+  there is a natural isomorphism
+  $\End_\F(U_i) \cong U_i \otimes U_i^*$.
+  View $U_i$ as the multiplicity space
+  for the right $A$-module and $U_i^*$ as
+  the multiplicity space for the left
+  $A$-module. By Proposition
+  \ref{prop:submodule-collection},
+  \[
+    A = \bigoplus_{i = 1}^k U_i \otimes V_i
+  \]
+  as a left $A$-module for some
+  $V_i \subseteq U_i^*$. Similarly for
+  the right $A$-module, we have
+  \[
+    A = \bigoplus_{i = 1}^k W_i \otimes U_i^*
+  \]
+  for some $W_i \subseteq U_i$.
+  Then we must have
+  $U_i \oplus V_i = W_i \oplus U_i^*$,
+  so $U_i \cong W_i$ and $V_i \cong U_i^*$
+  (the identity $1 \in A$ guarantees that
+  no component is zero). Thus
+  $\beta$ is surjective.
+\end{proof}
+
+\begin{corollary}
+  Let $\F$ be algebraically closed and
+  $A$ a finite-dimensional $\F$-algebra.
+  Then the set of isomorphism classes of
+  irreducible $A$-modules is finite
+  and non-empty.
+\end{corollary}
+
+\begin{proof}
+  First the set is nonempty since $A$ is
+  nonzero, so there are
+  irreducible subrepresentations.
+  To see that it is finite,
+  note that for all collections
+  $U_1, \dots, U_k$, the map
+  $A \to \bigoplus_{i = 1}^k \End_\F(U_i)$
+  is surjective, so
+  \[
+    \dim A \ge \sum_{i = 1}^k (\dim U_i)^2.
+  \]
+  This proves the desired result, since
+  $A$ is finite-dimensional.
+\end{proof}
+
+\section{Simple Algebras}
+
+\begin{definition}
+  An algebra $A$ is \emph{simple} if
+  the only two-sided ideals are
+  $\{0\}$ and $A$ (i.e. $A$ is irreducible
+  as a bimodule over itself).
+\end{definition}
+
+\begin{theorem}
+  Let $\F$ be an algebraically closed
+  field and $A$ a finite-dimensional
+  $\F$-algebra. Then the following are
+  equivalent:
+  \begin{enumerate}
+    \item $A$ is simple;
+    \item $A \cong \End_\F(U)$ for
+      some finite-dimensional vector space
+      $U$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  $(1 \Rightarrow 2)$: The algebra
+  $A$ has an irreducible representation
+  $U$, i.e. we have a map
+  $A \to \End_\F(U)$. Since $A$ is
+  simple, this map must have trivial kernel,
+  i.e. it is injective.
+  We also already
+  know that it is surjective, so
+  this map is an isomorphism.
+
+  $(2 \Rightarrow 1)$: Assume $I$ is a
+  two-sided ideal in $\End_\F(U) \cong U \otimes U^*$
+  and view $I \subseteq U \otimes U^*$.
+  Show as an exercise
+  that we must have $I = \{0\}$.
+\end{proof}
+
+\begin{theorem}
+  Every finite-dimensional module
+  $V$ for $A = \End_\F(U)$ is isomorphic
+  to a direct sum of several copies of $U$.
+\end{theorem}
