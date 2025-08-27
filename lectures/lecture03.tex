@@ -388,3 +388,17 @@
   $V$ for $A = \End_\F(U)$ is isomorphic
   to a direct sum of several copies of $U$.
 \end{theorem}
+
+\begin{proof}
+  Recall that every finitely generated
+  module $V$ is a quotient of
+  $A^{\oplus \ell}$ for some $\ell \in \N$.
+  We can write $A = U \otimes U^*$.
+  Let $A^{\oplus \ell} = U \otimes M$ and
+  consider the quotient map
+  $\pi : U \otimes M \to V$. Then
+  $\ker \pi \subseteq U \otimes M$
+  must be of the form
+  $U \oplus M_0$, so
+  we have $V \cong (U \otimes M) / (U \otimes M_0) = U \otimes (M / M_0)$.
+\end{proof}

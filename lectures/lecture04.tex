@@ -1,0 +1,352 @@
+\chapter{Aug.~27 --- Semisimple Algebras}
+
+\section{Semisimple Algebras}
+
+\begin{definition}
+  A finite-dimensional $\F$-algebra $A$
+  is called \emph{semisimple} if it
+  is isomorphic to a direct sum of
+  simple algebras.
+\end{definition}
+
+\begin{remark}
+  If $\F$ is algebraically closed, then
+  $A$ is a direct sum of matrix
+  algebras, i.e.
+  $\bigoplus_{i = 1}^k \End_\F(U_i)$.
+\end{remark}
+
+\begin{theorem}\label{thm:semisimple-direct-sum}
+  Let $U_1, \dots, U_k$ be
+  finite-dimensional vector spaces
+  over $\F$. Let $A = \bigoplus_{i = 1}^k \End_\F(U_i)$,
+  so that $U_i$ is an irreducible
+  $A$-module. Then every finite-dimensional
+  $A$-module $V$ is isomorphic to a direct
+  sum of several copies of $U_1, \dots, U_k$.
+\end{theorem}
+
+\begin{proof}
+  Left as an exercise.
+\end{proof}
+
+\begin{corollary}
+  Let $\F$ be algebraically closed, and
+  $A$ be semisimple and finite-dimensional.
+  Then
+  \begin{enumerate}
+    \item The number of isomorphism
+      classes of irreducible
+      $A$-modules is equal to
+      $\dim \mathcal{Z}(A)$.
+    \item Different irreducible
+      modules have different central
+      characters.
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  $(1)$
+  Let $A = \bigoplus_{i = 1}^k \End_\F(U_i)$.
+  By Theorem \ref{thm:semisimple-direct-sum},
+  the number of irreducible representations
+  is $k$. We can also write
+  \[
+    \mathcal{Z}\left(\bigoplus_{i = 1}^k A_k\right)
+    = \bigoplus_{i = 1}^k \mathcal{Z}(A_i),
+  \]
+  where $A_i = \End_\F(U_i)$.
+  Since $\dim \mathcal{Z}(A_i) = 1$, we
+  have $\dim \mathcal{Z}(\bigoplus_{i = 1}^k A_k) = k$
+  as well.
+  
+  $(2)$ Use the projections
+  $\mathcal{Z} \to \mathcal{Z}(A_i) \to \F$,
+  which correspond to the central characteres.
+\end{proof}
+
+\section{Characterizations of Semisimple Algebras}
+\begin{definition}
+  Let $A$ be a finite-dimensional
+  algebra. We say that a two-sided
+  ideal $I \subseteq A$ is
+  \emph{nilpotent} if $I^n = \{0\}$
+  for some $n$.
+\end{definition}
+
+\begin{exercise}
+  If $I, J$ are nilpotent, then
+  show that $I + J$ is also nilpotent.
+\end{exercise}
+
+\begin{definition}
+  The maximal nilpotent ideal of $A$,
+  denoted $\rad(A)$, is
+  called the \emph{radical} of $A$.
+\end{definition}
+
+\begin{theorem}
+  Let $\F$ be algebraically closed and
+  $A$ a finite-dimensional algebra.
+  Then the following are equivalent:
+  \begin{enumerate}
+    \item $A$ is semisimple;
+    \item all finite-dimensional
+      representations of $A$ are completely
+      reducible;
+    \item $\rad(A) = \{0\}$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  $(1 \Rightarrow 2)$ We have already
+  shown this.
+
+  $(2 \Rightarrow 3)$ Let $I = \rad(A)$,
+  so $I^n = \{0\}$ for some $n \in \N$.
+  Let $N$ be a finite-dimensional
+  $A$-module. Then
+  $I^\ell N$ is an $A$-submodule
+  for $\ell = 0, \dots, n$. Since
+  $N$ is completely reducible
+  and $I^{\ell + 1}N \subseteq I^{\ell} N$, we have
+  \[
+    I^\ell N = N_\ell \oplus I^{\ell + 1}.
+  \]
+  Acting on both sides by $I$, we get
+  $I N_{\ell} \subseteq I^{\ell + 1}$,
+  so $IN_{\ell} = \{0\}$.
+  Continuing, we get $IN = 0$, so
+  $A = N$.
+
+  $(3 \Rightarrow 1)$ Take $N_1, \dots, N_k$
+  to be
+  pairwise non-isomorphic irreducible
+  $A$-modules. We have an
+  epimorphism $A \to \bigoplus_{i = 1}^k \End_\F(N_i)$.
+  Let $I$ be the kernel, so
+  $I$ acts trivially on every
+  irreducible $A$-module. We claim that
+  $I$ is nilpotent.
+  Take $A$ to be the regular module.
+  Take a filtration
+  \[
+    A = A_0 \supseteq A_1 \supseteq \cdots
+    \supseteq A_n = \{0\},
+  \]
+  where
+  $A_i / A_{i + 1}$ is irreducible.
+  Now $I$ acts trivially
+  on $A_i / A_{i + 1}$, so
+  $I A_i \subseteq A_{i + 1}$ for all
+  $i$, thus $I^n = \{0\}$.
+\end{proof}
+
+\begin{remark}
+  Assume $\Char(\F) = 0$.
+  Consider the following bilinear
+  form on $A$:
+  \[
+    (a, b)_U = \tr_U(ab),
+  \]
+  where $U$ is any $A$-module. Note that
+  $U$ could be $A$.
+\end{remark}
+
+\begin{theorem}
+  Let $\Char(\F) = 0$, and let
+  $A$ be a finite-dimensional $\F$-algebra.
+  Then $A$ is semisimple if and only if
+  $(a, b)_A$ is nondegenerate.
+\end{theorem}
+
+\begin{proof}
+  $(\Rightarrow)$ Assume $A$ is
+  semisimple, so
+  $A = \bigoplus_{i = 1}^k \End(U_i)$.
+  Note that the restriction of
+  $(\cdot, \cdot)_A$ to the
+  direct summand $\End_\F(U_i)$
+  coincides with
+  $(\cdot, \cdot)_{\End_\F(U_i)}$.
+  Let $E_{j \ell}$ denote the matrix with
+  all $0$s except a single $1$ in the
+  $(j, \ell)$ entry. Then we can compute
+  that
+  \[
+    (E_{j \ell}, E_{j' \ell'})_{\End_\F(U_i)}
+    = \delta_{ej'} \tr_{\End_\F(U_i)}(E_{j\ell'})
+    = \delta_{e\ell} \delta_{j \ell'}
+    \dim U_i.
+  \]
+  So if $\{E_{j \ell}\}$ is a basis, then
+  $\{(\dim U_i)^{-1} E_{j \ell}\}$
+  is the dual basis.
+  This is nondenegerate if
+  $\Char(\F) = 0$.
+
+  $(\Leftarrow)$ Suppose $(\cdot, \cdot)_A$
+  is nondegenerate. If $I$ is a nilpotent
+  ideal, then for any $a \in I$
+  such that $a^n = 0$. Then $\tr_A(a) = 0$
+  for any $a \in I$, so
+  $I \in \ker(\cdot, \cdot) = 0$.
+  Since $(\cdot, \cdot)$ is nondegenerate,
+  we have $I = \{0\}$.
+\end{proof}
+
+\section{Double Centralizer Theorem}
+
+\begin{theorem}[Double centralizer theorem]
+  Let $V$ be a finite-dimensional vector
+  space over $\F$. Let
+  $A \subseteq \End_\F(V)$ be a semisimple
+  algebra, and
+  set $B = \End_A(V)$. Then
+  $A = \End_B(V)$.
+\end{theorem}
+
+\begin{proof}
+  Let $A = \bigoplus_{i = 1}^k \End(U_i)$
+  and $V$ be a faithful representation
+  of $A$, so $V$ is completely reducible:
+  \[
+    V \cong \bigoplus_{i = 1}^k U_i \oplus M_i,
+  \]
+  where the $M_i$ are multiplicity spaces.
+  Let $a = (\varphi_1, \dots, \varphi_k) \in A$
+  (for $\varphi_i \in \End(U_i)$)
+  act on $\End_{\F}(V)$ by
+  \[
+    (\varphi_1, \dots, \varphi_k)
+    \longmapsto
+    \sum_{i = 1}^k \varphi_i \otimes \id_{M_i}.
+  \]
+  Note that the $M_i$ are nonzero
+  since $V$ is faithful. Then 
+  $B = \bigoplus_{i = 1}^n \End(M_i)$
+  embeds into $\End_\F(V)$ via
+  \[
+    (\psi_1, \dots, \psi_k)
+    \longmapsto
+    \sum_{i = 1}^k {\id_{U_i}} \otimes \psi_i,
+  \]
+  which completes the proof.
+\end{proof}
+
+\section{Representations of Finite Groups}
+
+\begin{remark}
+  Recall that to any group $G$ we can
+  associate the group algebra
+  $\F G$. For any representation of
+  $G$, there is a representation
+  of $\F G$ and vice versa.
+\end{remark}
+
+\begin{remark}
+  Consider the following operations
+  with representations. Let $U, V$
+  be representations of $G$.
+  \begin{enumerate}
+    \item the \emph{tensor product} $U \otimes_\F V$, where
+      $g(U \otimes V) = (g U \otimes gV)$;
+    \item the \emph{dual} $U^*$
+      defined by
+      $\langle g \alpha, u \rangle = \langle \alpha, g^{-1} u \rangle$
+      for $u \in U$, $\alpha \in U^*$,
+      $g \in G$;
+    \item $\Hom_{\F}(U, V)$, with
+      action given by
+      $[g \varphi](h) = g[\varphi(g^{-1} u)]$
+      for $\varphi \in \Hom_\F(U, V)$.
+  \end{enumerate}
+\end{remark}
+
+\begin{exercise}
+  Show the following:
+  \begin{enumerate}
+    \item The tensor product of
+      representations satisfies
+      associativity, distributivity, and
+      commutativity.
+    \item There is an isomorphism
+      of representations
+      $U^* \otimes V \to \Hom(U, V)$.
+    \item $\Hom_G(U, V) \subseteq \Hom(U, V)$
+      coincides with the space
+      of $G$-invariant elements.
+  \end{enumerate}
+\end{exercise}
+
+\begin{remark}
+  For the rest of this section,
+  assume $\F$ is algebraically closed
+  and $\Char \F = 0$.
+\end{remark}
+
+\begin{theorem}
+  The group algebra $\F G$ is semisimple.
+\end{theorem}
+
+\begin{proof}
+  It suffices to show that
+  $(\cdot, \cdot)_{\F G}$ is nondegenerate.
+  Take $g, g' \in G$, and note
+  that $gg' : h \mapsto gg' h$, so
+  \[
+    (g, g')_{\F G}
+    = \tr_{\F G}(gg') = \delta_{1, gg'} |G|,
+  \]
+  which is nondegenerate.
+  Moreover,
+  the basis $\{g\}$ in $\F G$
+  corresponds to the dual basis
+  $\{|G|^{-1}g^{-1}\}$.
+\end{proof}
+
+\begin{corollary}
+  (Let $\F$ be algebraically closed
+  and $\Char \F = 0$.)
+  \begin{enumerate}
+    \item Every finite-dimensional
+      representation of $G$ is completely
+      reducible.
+    \item The number of isomorphism classes
+      of irreducible representations
+      is equal to the number of conjugacy
+      classes of $G$.
+    \item If $U_1, \dots, U_k$
+      are all of the pairwise
+      non-isomorphic irreducible
+      representations of $G$, then
+      \[
+        |G| = \sum_{i = 1}^k (\dim U_i)^2.
+      \]
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  $(1)$ This follows from the semisimplicity
+  of $\F G$.
+
+  $(2)$ It suffices to show that
+  $\dim \mathcal{Z}(\F G)$ equals the
+  number of conjugacy classes of $G$.
+  We have
+  \[
+    \mathcal{Z}(\F G)
+    = \left\{
+      \sum_{g \in G} a_g g :
+      a_g \text{ is constant on conjugacy classes}
+    \right\},
+  \]
+  i.e. we must have
+  $a_{hgh^{-1}} = a_g$ for any
+  $h \in G$. So the dimension is
+  the number of conjugacy classes.
+  
+  $(3)$ This automatically follows
+  from looking at the dimension of
+  $\F G$.
+\end{proof}
