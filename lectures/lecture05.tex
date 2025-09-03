@@ -1,0 +1,322 @@
+\chapter{Sept.~3 --- Representations of Finite Groups}
+
+\section{Representations of \texorpdfstring{$S_4$}{S4}}
+\begin{remark}
+  We will write \emph{irrep} for
+  ``irreducible representation.''
+\end{remark}
+
+\begin{example}
+  Consider the symmetric group
+  $S_4$, with $|S_4| = 24$. The conjugacy
+  classes of $S_4$ are parametrized by
+  partitions of $4$: If we have a partition
+  \[
+    \lambda = (\lambda_1, \lambda_2, \ldots, \lambda_k), \quad
+    \lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_k \ge 1,
+    \quad
+    \lambda_1 + \lambda_2 + \cdots + \lambda_k = 4,
+  \]
+  then the corresponding conjugacy class
+  has cycle type $\lambda$. For
+  example, the conjugacy classes are given by
+  \begin{enumerate}
+    \item $\lambda_1 = 4$: $[4]$;
+    \item $\lambda_1 = 3$, $\lambda_2 = 1$: $[3, 1]$;
+    \item $\lambda_1 = 2$, $\lambda_2 = 2$: $[2, 2]$;
+    \item $\lambda_1 = 2$, $\lambda_2 = 1$, $\lambda_3 = 1$: $[2, 1, 1]$;
+    \item $\lambda_1 = 1$, $\lambda_2 = 1$, $\lambda_3 = 1$, $\lambda_4 = 1$: $[1, 1, 1, 1]$.
+  \end{enumerate}
+  In particular, this means that
+  $S_4$ has $5$ irreps. We can enumerate
+  them as follows:
+  \begin{enumerate}
+    \item We have the $1$-dimensional representations:
+      the trivial representation and the
+      sign $\sign_4$.
+    \item Let $S_4$ act on $\C^4$
+      by permuting the basis vectors.
+      The span of
+      $(x, x, x, x)$ gives a $1$-dimensional
+      subrepresentation, but it has
+      a unique $3$-dimensional complement
+      $\refl_4$.
+    \item We can take a tensor
+      product $\refl_4 \otimes \sign_4$,
+      which is also $3$-dimensional. One
+      can check that this is different
+      from $\refl_4$ by looking at the
+      determinant.
+    \item We have found two $1$-dimensional
+      and two $3$-dimensional irreps,
+      which account for
+      $1 + 1 + 9 + 9 = 20$ of the
+      $24$ dimensions. Thus there
+      is a missing $2$-dimensional
+      representation.
+
+      Note that there is a projection
+      $\pi : S_4 \to S_3$ which is a
+      homomorphism with kernel
+      $\Z / 2\Z \times \Z / 2\Z$.
+      Figure this out and find the
+      last irrep as an exercise.
+  \end{enumerate}
+\end{example}
+
+\begin{exercise}
+  Let $G$ be a finite abelian group.
+  Prove that all irreps of $G$ are
+  $1$-dimensional.
+\end{exercise}
+
+\section{Characters}
+
+\begin{definition}
+  Let $G$ be a group, and let $U$ a
+  finite-dimensional representation of $G$.
+  The \emph{character} $\chi_U : G \to \F$
+  is defined by $\chi_U(g) = \tr_U(g)$.
+\end{definition}
+
+\begin{exercise}
+  Prove the following:
+  \begin{enumerate}
+    \item $\chi_U$ is constant on
+      conjugacy classes of $G$.
+    \item $\chi_{U \oplus V} = \chi_U \oplus \chi_V$.
+    \item $\chi_{U \otimes V} = \chi_U \chi_V$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{remark}
+  For the rest of this section,
+  assume $G$ is finite and $\F = \C$.
+  So we know every representation
+  of $G$ is completely reducible.
+  Denote by $\C[G]$ the algebra of
+  complex-valued functions on $G$, and
+  $\C[G]^G$ the subalgebra of
+  functions constant on conjugacy
+  classes (i.e. the $G$-invariant functions).
+  Clearly the character $\chi_U$ lies
+  in $\C[G]^G$ for any finite-dimensional
+  representation $U$ of $G$.
+\end{remark}
+
+\begin{definition}
+  Define a Hermitian scalar product
+  on $\C[G]^G$ (a priori only on the
+  characters) by
+  \[
+    (\chi_1, \chi_2)
+    = \frac{1}{|G|} \sum_{g \in G}
+    \chi_1(g) \overline{\chi_2(g)}.
+  \]
+\end{definition}
+
+\begin{prop}
+  Let $U, V$ be finite-dimensional
+  representations of $G$. Then
+  \[
+    (\chi_U, \chi_V) = \dim \Hom_G(U, V).
+  \]
+\end{prop}
+
+\begin{proof}
+  We first note that
+  $\chi_{U^*} = \overline{\chi}_U$. To
+  see this, observe that
+  since $G$ is finite, we have
+  $g^n = 1$ for some $n$. In particular,
+  the eigenvalues $\lambda_i(g)$ of $g$
+  have $|\lambda_i(g)| = 1$. Thus
+  $\lambda_i(g^{-1}) = \overline{\lambda_i(g)}$, so we see the result after
+  taking traces. Another
+  way to see this is the following:
+  For a representation $\rho : G \to U$,
+  we can make each $\rho(g)$ into a unitary
+  operator as follows. Begin with a
+  pairing $\langle \cdot, \cdot \rangle_0$
+  on $U$ and define
+  \[
+    \langle v, w \rangle
+    = \frac{1}{|G|} \sum_{g \in G} \langle \rho(g) v, \rho(g) w \rangle_0, \quad
+    v, w \in U.
+  \]
+  Then $\rho(g)$ is unitary with
+  respect to $\langle \cdot, \cdot \rangle$,
+  and we get the result.
+
+  Continuing, we have
+  $V \otimes U^* = \Hom_\C(U, V)$, so
+  $\chi_{\Hom(U, V)} = \chi_V \overline{\chi}_U$.
+  Consider the averaging element
+  \[
+    \epsilon = |G|^{-1} \sum_{g \in G} g \in \C[G].
+  \]
+  This is a projector on $G$-invariants
+  ($W^G$) in any representation $W$. Thus
+  $\tr_W(\epsilon) = \dim W^G$.
+  Applying this to $W = \Hom(U, V)$ and noting
+  that $\Hom_G(U, V) = \Hom(U, V)^G$, we
+  get
+  \[
+    \dim \Hom_G(U, V)
+    = \tr_{\Hom(U, V)}(\epsilon)
+    = |G|^{-1} \sum_{g \in G} \chi_{\Hom(U, V)}(g)
+    = |G|^{-1} \sum_{g \in G} \chi_V(g) \overline{\chi_U(g)}
+    = (\chi_V, \chi_U),
+  \]
+  which proves the desired claim.
+\end{proof}
+
+\begin{corollary}
+  The characters of irreps form an
+  orthonormal basis in $\C[G]^G$.
+\end{corollary}
+
+\begin{proof}
+  Schur's lemma implies orthonormality.
+  Since the number of irreps equals the
+  number of conjugacy classes, the
+  characters must form a basis.
+\end{proof}
+
+\section{Induced Representations}
+
+\begin{remark}
+  In this
+  section, we only assume $k$ is a
+  commutative ring.
+
+  Let $H \subseteq G$, where
+  $H, G$ are finite groups, let
+  $kH, kG$ be the
+  corresponding group algebras, and let
+  $U$ be a representation of $H$.
+  Treating $kG$ as a $kG$-$kH$-bimodule,
+  we can construct the tensor
+  product
+  \[
+    kG \otimes_{kH} U.
+  \]
+  Similarly, treating $kG$ as a
+  $kH$-$kG$-bimodule, we can construct
+  the representation
+  \[
+    \Hom_{kH}(kG, U).
+  \]
+  In fact, these two representations are
+  isomorphic, we call it the
+  \emph{induced representation}, denoted
+  $\Ind_H^G U$.
+\end{remark}
+
+\begin{prop}
+  There is a natural
+  isomorphism
+  $kG \otimes_{kH} U \cong \Hom_{kH}(kG, U)$.
+\end{prop}
+
+\begin{proof}
+  First treat $kG$ as a $kH$-$kG$-bimodule,
+  so we can consider $\Hom_{kH}(kG, kH)$
+  since $kG$, $kH$ are both left
+  $kH$-modules. So for any element
+  $\varphi : kG \to kH$, we have
+  \[
+    \varphi(hg) = h \varphi(g), \quad
+    h \in H, g \in G.
+  \]
+  with a left $G$-action and
+  right $H$-action given by
+  \[
+    [g \varphi](g')
+    = \varphi(g' g) \quad
+    \text{and} \quad
+    [\varphi h](g') = \varphi(h g').
+  \]
+  Note that $kG$ is a free left $kH$-module
+  with basis given by the orbits of $H$.
+  Show as an exercise that
+  \begin{align*}
+  \Hom_{kH}(kG, kH)
+  \otimes_{kH} U
+  &\overset{\cong}{\longrightarrow}
+  \Hom_{kH}(kG, U) \\
+  \alpha \otimes u
+  &\longmapsto
+  (x \mapsto \alpha(x) u)
+  \end{align*}
+  is an isomorphism. From here it suffices
+  to show that
+  \[
+    kG \overset{\cong}{\longrightarrow}
+    \Hom_{kH}(kG, kH)
+  \]
+  as $kG$-$kH$-bimodules. Define this map
+  via $g \mapsto \varphi_g \in \Hom_{kH}(kG, kH)$,
+  where
+  \[
+    \varphi_g(g') =
+    \begin{cases}
+      g' g & \text{if } g' g \in H, \\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+  We need to show that $\varphi$ is
+  $H$-equivariant, $G$-equivariant, and
+  an isomorphism of $k$-modules.
+
+  To see $H$-equivariance, note that
+  $\varphi_{gh}(g')$ and $\varphi_g(g') h$
+  are nonzero and equal if and only if
+  $g g' \in H$. For the
+  $G$-equivariance, note that
+  $\varphi_{g_1 g}(g')$ and
+  $[g_1 \varphi_g](g')$ are given by
+  \begin{align*}
+    \varphi_{g_1 g} (g')
+    = g' g_1 g
+    \quad &\text{if } g' g_1 g \in H, \\
+    [g_1 \varphi_g](g')
+    = g' g_1 g
+    \quad &\text{if } g' g_1 g \in H
+  \end{align*}
+  and zero otherwise, so they coincide.
+  To prove that $\varphi$ is an
+  isomorphism of $k$-modules, we need to
+  check that the $\varphi_g$ form a
+  basis in $\Hom_{kH}(kG, kH)$.
+  Let $g_1, \dots, g_\ell$ be representatives
+  of the left $H$-orbits in $G$. Then we
+  claim that the following map is an
+  isomorphism of $k$-modules:
+  \begin{align*}
+    \Hom_{kH}(kG, kH)
+    &\overset{\cong}{\longrightarrow}
+    (kH)^{\oplus \ell} \\
+    \varphi \mapsto \{\varphi(g_i)\}_{i = 1}^\ell.
+  \end{align*}
+  This follows since for any $g \in G$ and
+  $i \in \{1, \dots, \ell\}$,
+  there is a unique element $h \in H$
+  such that $h g_i = g^{-1}$, so
+  $\varphi_g$ is sent to the corresponding
+  summand.
+\end{proof}
+
+\begin{corollary}
+  Let $U$ be a representation of
+  $H$ and $V$ a representation of $G$. Then
+  \begin{enumerate}
+    \item $\Hom_G(\Ind_H^G(U), V) \cong \Hom_H(U, V)$;
+    \item $\Hom_G(V, \Ind_H^G(U)) \cong \Hom_H(V, U)$.
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  This follows from the Tensor-Hom
+  adjunction, check it as an exercise.
+\end{proof}
