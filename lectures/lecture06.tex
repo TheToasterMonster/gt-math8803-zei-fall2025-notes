@@ -1,0 +1,311 @@
+\chapter{Sept.~8 --- Representations of \texorpdfstring{$S_n$}{Sn}}
+
+\section{Motivation for Studying \texorpdfstring{$S_n$}{Sn} and Summary}
+
+\begin{remark}
+  The finite \emph{simple} groups
+  (those with no nontrivial normal subgroups)
+  are classified as follows:
+  \begin{enumerate}
+    \item abelian groups: cyclic groups of
+      finite order;
+    \item alternating groups:
+      $U_n \subseteq S_n$ (the subgroup of
+      even permutations) for $n \ge 5$;
+    \item $26$ exceptional finite simple
+      groups;
+    \item finite simple groups of
+      \emph{Lie type} (analogues of
+      Lie groups for finite fields).
+  \end{enumerate}
+  The final parts of the classification
+  were done by
+  Gorenstein (1960--1980s) and
+  Aschbacher-Smith (2004).
+\end{remark}
+  
+\begin{remark}
+  We study $S_n$ because it is
+  easier to work with than directly
+  studying $U_n$, and we can recover
+  representations of $U_n$
+  from those of $S_n$ via
+  Frobenius reciprocity.
+\end{remark}
+
+\begin{remark}
+  We have previously seen the following
+  using our abstract theory:
+  \begin{enumerate}
+    \item Representations of $S_n$
+      are the same as representations of
+      $\C S_n$.
+    \item The algebra $\C S_n$ is
+      semisimple:
+      $\C S_n \cong \bigoplus_V \End_\C(V)$,
+      where $V$ runs over the isomorphism
+      classes of irreps of $S_n$.
+    \item The number of irreps of $S_n$
+      (up to isomorphism) coincides with
+      the number of conjugacy classes.
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  In the case of $S_n$, the conjugacy
+  classes are enumerated by
+  partitions of $n$:
+  \[
+    (n_1, n_2, \dots, n_k), \quad
+    n_1 \ge n_2 \ge \cdots \ge n_k.
+  \]
+  We can write repeated parts via
+  $(m_1^{d_1}, \dots, m_e^{d_e})$, where
+  $m_1 > m_2 > \cdots > m_e$. So for
+  $S_6$, we have
+  \[
+    (2, 2, 1, 1) \longleftrightarrow
+    (2^2, 1^2).
+  \]
+\end{remark}
+
+\section{The Inductive Approach: Background}
+
+\begin{remark}
+  We will follow the \emph{inductive approach},
+  due to Okounkov-Vershik. Consider
+  the inclusions
+  \[
+    \{1\} = S_1 \subseteq S_2
+    \subseteq \cdots \subseteq S_{n - 1} \subseteq S_n.
+  \]
+  Note that if $H \subseteq G$ are finite groups,
+  then an irrep of $\C G$ decomposes
+  into irreps of $\C H$.
+
+  In general, if $B \subseteq A$ are
+  finite-dimensional associative algebras
+  and $\tau : B \to A$ is a homomorphism,
+  then any $A$-module is also a $B$-module
+  by the homomorphism $\tau$.
+  We have isomorphisms
+  \begin{align*}
+    A &\overset{\cong}{\longrightarrow} \bigoplus_{V \in \Irr(A)} \End_\C(V), \\
+    B &\overset{\cong}{\longrightarrow} \bigoplus_{U \in \Irr(B)} \End_\C(U).
+  \end{align*}
+  Let $M_{V, U} = \Hom_B(U, V)$ be
+  multiplicity spaces. Then there is a
+  $B$-linear isomorphism
+  \begin{align*}
+    \bigoplus_i U_i \otimes M_{V, U_i}
+    &\overset{\cong}{\longrightarrow} V \\
+    \sum_i u_i \otimes \varphi_i
+    &\longmapsto \sum_i \varphi_i(u_i).
+  \end{align*}
+  We can compute $M_{V, U}$ from
+  an algebraic perspective.
+\end{remark}
+
+\begin{definition}
+  Define the \emph{centralizer}
+  of $B$ in $A$ to be
+  \[
+    \mathcal{Z}_B(A)
+    = \{a \in A : a \tau(b) = \tau(b) a \text{ for all } b \in B\}.
+  \]
+\end{definition}
+
+\begin{exercise}
+  Prove the following:
+  \begin{enumerate}
+    \item $\ZZ_A(A) = \ZZ(A)$.
+    \item $\ZZ_B(A)$ is a subalgebra of $A$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{lemma}
+  There is an isomorphism
+  $\ZZ_B(A) \cong \bigoplus_{U, V} \End(M_{V, U})$,
+  with $U, V$ such that $M_{V, U} \ne 0$.
+\end{lemma}
+
+\begin{proof}
+  We have the isomorphism
+  \[
+    A \overset{\cong}{\longrightarrow}
+    \bigoplus_V \End(V),
+  \]
+  and we can view $\tau : B \to A$ as
+  $(\tau_V)_{V \in \Irr(A)}$, where
+  $\tau_V : B \to \End(V)$. Similarly,
+  we can
+  view an element $a \in A$ as $(a_V) \in \bigoplus_V \End(V)$.
+  Then $a \in \ZZ_B(A)$ if and only if
+  $a_V \in \ZZ_B(\End(V))$ for all $V$, so
+  \[
+    \ZZ_B(A)
+    = \bigoplus_V \ZZ_B(\End(V)).
+  \]
+  Then
+  $\ZZ_B(\End(V)) \cong \End_B(V) \cong \bigoplus_U \End(M_{V, U})$,
+  which completes the proof.
+\end{proof}
+
+\begin{remark}
+  We have the following actions of
+  $\ZZ_B(A)$ on
+  $\End(M_{V, U}) = \Hom_B(U, V)$:
+  \begin{enumerate}
+    \item $\End_B(V)$ acts on
+      $\Hom_B(U, V)$ via
+      \begin{align*}
+        \End_B(V) \times \Hom_B(U, V)
+        &\longrightarrow \Hom_B(U, V) \\
+        (\alpha, \varphi) &\longmapsto \alpha \circ \varphi;
+      \end{align*}
+    \item for $z \in \ZZ_B(A)$,
+      $\varphi \in \Hom_B(U, V)$,
+      we can define $z \varphi \in \Hom_B(U, V)$
+      by
+      \[
+        [z \varphi](u) = z \varphi(u),
+      \]
+      where the right-hand side is
+      the $A$-action on $V$.
+  \end{enumerate}
+\end{remark}
+
+\begin{corollary}
+  The following conditions are equivalent:
+  \begin{enumerate}
+    \item for all $U \in \Irr(B)$
+      and $V \in \Irr(A)$, we have
+      $\dim \Hom_B(U, V) \le 1$;
+    \item $\ZZ_B(A)$ is commutative.
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  $\ZZ_B(A) = \bigoplus_{U, V} \End(M_{V, U})$ is
+  commutative if and only if
+  $\End(M_{V, U})$ has dimension
+  $1$ or $0$.
+\end{proof}
+
+\begin{example}
+  Let $A = \Mat_4(\C) \oplus \Mat_3(\C)$
+  and $B = \Mat_2(\C) \oplus \C^{\oplus 2}$.
+  Define $\tau : B \to A$ by
+  \[
+    \tau(x_1, x_2, x_3)
+    = (\diag(x_1, x_2, x_2), \diag(x_1, x_3)), \quad
+    x_1 \in \Mat_2(\C), x_2, x_3 \in \C.
+  \]
+  We have $B$-modules
+  $U_1, U_2, U_3$ of dimensions
+  $2, 1, 1$ and $A$-modules
+  $V_1, V_2$ of dimensions $4, 3$. Note
+  that $M_{V_1, U_2}$ is $2$-dimensional,
+  and $M_{V_1, U_1}$, $M_{V_2, U_1}$,
+  $M_{V_2, U_3}$ are $1$-dimensional.
+  So far, we have
+  \[
+    \ZZ_B(A) \cong \Mat_2(\C) \oplus \C^{\oplus 3}.
+  \]
+  To verify this directly, we know that
+  $\ZZ_B(A)$ consists of pairs
+  $(y_1, y_2) \in \Mat_4(\C) \oplus \Mat_3(\C)$
+  such that $y_1$ commutes with
+  $\diag(x_1, x_2, x_2)$ and $y_2$
+  commutes with $\diag(x_1, x_3)$. So
+  \[
+    y_1 =
+    \begin{pmatrix}
+      a & 0 & 0 & 0 \\
+      0 & a & 0 & 0 \\
+      0 & 0 & b & c \\
+      0 & 0 & d & e
+    \end{pmatrix}, \quad
+    y_2 =
+    \begin{pmatrix}
+      f & 0 & 0 \\
+      0 & f & 0 \\
+      0 & 0 & g
+    \end{pmatrix}.
+  \]
+  So $\ZZ_B(A)$ is parametrized by the
+  $2 \times 2$ matrix and the $3$ scalars
+  $a, f, g$.
+\end{example}
+
+\section{The Inductive Approach: Representations of \texorpdfstring{$S_n$}{Sn}}
+
+\begin{remark}
+  Let $S_m \subseteq S_n$ for
+  $m < n$, and let
+  $\ZZ_m(n)$ be the corresponding
+  centralizer for group algebras.
+\end{remark}
+
+\begin{lemma}
+  Let $H \subseteq G$ be finite groups.
+  Then $\Z_{\C H}(\C G) \subseteq \C G$
+  consists of elements of the form
+  $\sum_{g \in G} a_g g$ such that
+  $a_{h g h^{-1}} = a_g$ for all
+  $h \in H$. In particular,
+  $\ZZ_{\C H}(\C G)$ has a basis indexed
+  by the $H$-conjugacy classes in $G$,
+  given by (for a conjugacy class $C$)
+  \[
+    C \longmapsto b_C =
+    \sum_{g \in C} g \in \ZZ_{\C H}(\C G).
+  \]
+\end{lemma}
+
+\begin{example}
+  Note that for $\C S_m \subseteq \C S_n$,
+  conjugation permutes the first $m$
+  elements. For example, for
+  $S_3 \subseteq S_6$, we can
+  write a conjugacy class as
+  $({*}\ {*}\ 4)(5\ {*})(6)$, which
+  contains elements like
+  $(1\ 2\ 4)(5\ 3)$ and
+  $(2\ 3\ 4)(5\ 1)$.
+  For $m = n - 1$, consider the conjugacy
+  class $({*}\ n)$, which consists of
+  \[
+    (1\ n), \quad (2\ n), \quad \ldots, \quad (n - 1\ n).
+  \]
+  Then the basis element $b_{({*}\, n)}$
+  (called the $n$th \emph{Jucys-Murphy element}) is given by
+  \[
+    b_{({*}\, n)} = \sum_{i = 1}^{n - 1} (i\ n).
+  \]
+\end{example}
+
+\begin{remark}
+  We will now determine
+  algebra generators of
+  $\ZZ_m(n)$. It contains
+  \begin{enumerate}
+    \item $\ZZ_m(m)$: the center of
+      $\C S_m$;
+    \item $S_{[m + 1, n]}$: the subgroup
+      of $S_n$ containing permutations
+      fixing $1, \dots, m$;
+    \item $J_k = \sum_{i = 1}^{k - 1} (i\ k)$
+      for $k = m + 1, \dots, n$.
+  \end{enumerate}
+  Note that $J_{m + 1}, \dots, J_n$
+  pairwise commute (check this as
+  an exercise).
+\end{remark}
+
+\begin{theorem}
+  The algebra $\ZZ_m(n)$ is generated by
+  the subalgebras $\ZZ_m(m)$,
+  $\C S_{[m + 1, n]}$, and the elements
+  $J_{m + 1}, \dots, J_n$.
+\end{theorem}

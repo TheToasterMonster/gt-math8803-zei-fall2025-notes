@@ -307,9 +307,9 @@
   summand.
 \end{proof}
 
-\begin{corollary}
-  Let $U$ be a representation of
-  $H$ and $V$ a representation of $G$. Then
+\begin{corollary}[Frobenius reciprocity]
+  Let $U, V$ be representations of
+  $H, G$, respectively. Then
   \begin{enumerate}
     \item $\Hom_G(\Ind_H^G(U), V) \cong \Hom_H(U, V)$;
     \item $\Hom_G(V, \Ind_H^G(U)) \cong \Hom_H(V, U)$.
@@ -320,3 +320,20 @@
   This follows from the Tensor-Hom
   adjunction, check it as an exercise.
 \end{proof}
+
+\begin{remark}
+  What really is $\Ind_H^G U$?
+  Consider the set of maps (of sets)
+  $G \to U$, denote it by $\Fun(G, U)$.
+  The action of $G$ on itself gives
+  $\Fun(G, U)$ the structure of a
+  $kG$-module. Then we can define
+  \[
+    \Fun_H(G, U)
+    = \{f \in \Fun(G, U) : f(hg) = h f(g)\}
+    \subseteq \Fun(G, U),
+  \]
+  which we can identify with
+  the induced representation
+  $\Hom_{kH}(kG, U)$.
+\end{remark}
