@@ -1,0 +1,288 @@
+\chapter{Sept.~17 --- Combinatorial Weights}
+
+\section{More on the Degenerate Affine Hecke Algebra}
+
+\begin{proof}[Proof of Lemma \ref{lem:hh2-irreps}]
+  Assume $a \ne b$. Then $X_1, X_2$
+  have two distinct eigenvalues, hence
+  they are diagonalizable.
+  Since $a \ne b$, every subspace in
+  $M(a, b)$ stable under
+  $X_1$ (or $X_2$) must be the sum
+  of these eigenspaces. If
+  one has a $1$-dimensional
+  submodule for $\HH(2)$, then
+  $T$ must preserve it. If
+  $a = b \pm 1$, then $m \pm Tm$ is an
+  eigenvector for $X_1, X_2, T$, so
+  $M(a, b)$ is not irreducible.
+
+  For the last part, we can simply
+  switch the two eigenvalues.
+\end{proof}
+
+\begin{prop}
+  The finite-dimensional irreps of
+  $\HH(2)$ are classified by
+  pairs of complex numbers $(a, b)$,
+  $(a, b) \mapsto L(a, b)$, where
+  $L(a, b) \cong L(b, a)$ if $b \ne a, a \pm 1$.
+  Moreover, we have
+  \begin{enumerate}
+    \item If $b = a + 1$, then
+      $L(a, b) = \C$ with
+      $T \mapsto 1$, $X_1 = a$, $X_2 = b$.
+    \item If $b = a - 1$, then
+      $L(a, b) = \C$ with
+      $T \mapsto -1$, $X_1 = a$, $X_2 = b$.
+    \item If $b \ne a \pm 1$, then
+      $L(a, b) \cong M(a, b)$.
+    \item The action of $X_1, X_2$
+      on $L(a, b)$ is diagonalizable
+      if and only if $a \ne b$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  This is Example
+  \ref{ex:hh2-module} and
+  Lemma \ref{lem:hh2-irreps}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:path-varying}]
+  Let $w_P = (w_1, \dots, w_n)$,
+  $P' \in \Path(V, i)$, and
+  $w_{P'} = (w_1', \dots, w_n')$,
+  where the $w_j'$ depend only on
+  $V_j, V_{j - 1}$. Note that 
+  $V_j' = V_j$ for all $j \ne i$ implies
+  $w_j' = w_j$ for all $j \ne i$. We
+  have shown that $V_{P, i}$ is an
+  irreducible $\mathcal{Z}_{i - 1}(i + 1)$-module
+  and also an irreducible
+  $\HH(2)$-module, and that
+  $X_1, X_2$ ($J_i, J_{i + 1}$) are
+  diagonalizable with
+  eigenvalues $(w_i, w_{i + 1})$
+  and $(w_i', w_{i + 1}')$.
+  This proves $(1)$-$(3)$.
+
+  $(4)$ If $w_{i + 1} = w_i \pm 1$, then
+  $w_{i + 2} \ne w_i$ (check this
+  as an exercise).
+  By $(2)$, $w_{i + 1} = w_i \ne 1$
+  implies that $V_{P, i + 1}$ is also
+  $1$-dimensional, and
+  $\C v_P$ is invariant under
+  $(i, i + 1)$, $(i + 1, i + 2)$. Now
+  observe that
+  \[
+    (i, i + 1)(i + 1, i + 2)(i, i + 1)
+    = (i, i + 2)
+    = (i + 1, i + 2)(i, i + 1)(i + 1, i + 2),
+  \]
+  which is the same element. But
+  $(i, i + 1)$ and $(i + 1, i + 2)$
+  act on $v_P$ by $\pm 1$ and $\mp 1$,
+  respectively, so the above implies
+  that $\mp 1 = \pm 1$, which is a
+  contradiction.
+\end{proof}
+
+\section{Combinatorial Weights}
+
+\begin{definition}
+  We say two elements of $\C^n$
+  are \emph{$c$-equivalent} (the
+  $c$ is for ``combinatorial'')
+  if one can be obtained from the other
+  through a sequence of \emph{admissible}
+  transpositions (those where the difference
+  between two adjacent entries in the
+  transposition is not $\pm 1$).
+\end{definition}
+
+\begin{definition}
+  A \emph{combinatorial weight}
+  is an element of $\C^n$ such that
+  every element $(w_1, \dots, w_n) \in \C^n$ combinatorially
+  equivalent to it satisfies:
+  \begin{enumerate}
+    \item $w_1 = 0$;
+    \item for all $i = 1, \dots, n - 1$,
+      $w_i \ne w_{i + 1}$;
+    \item for all $i = 1, \dots, n - 2$,
+      we have $w_{i + 1} = w_{i} \pm 1$
+      implies $w_{i + 2} \ne w_i$.
+  \end{enumerate}
+  Denote the set of combinatorial weights
+  by $c{\Wt_n}$.
+\end{definition}
+
+\begin{corollary}
+  We have the following:
+  \begin{enumerate}
+    \item $\Wt_n \subseteq c{\Wt_n}$, so
+      $\Wt_n$ is a collection of
+      $c$-equivalence classes.
+    \item $c$-equivalence implies
+      $r$-equivalence. Moreover,
+      $|{\Wt_n} / {\sim_r}| \le |{\Wt_n} / {\sim_c}| \le |{c{\Wt_n}} / {\sim_c}|$.
+    \item There is a one-to-one correspondence
+      ${\Wt_n} / {\sim_r} \longleftrightarrow \Irr(\C S_n)$.
+  \end{enumerate}
+\end{corollary}
+
+\begin{lemma}\label{lem:comb-weights}
+  Every $c$-equivalence class contains
+  elements of the form
+  \[(0, 1, \dots, n_1 - 1, -1, 0, 1, \dots, n_2 - 2, -2, \dots, (1 - k), \dots, n_k - k),\]
+  where $n_1 \ge n_2 \ge \cdots \ge n_k$
+  and $n_1 + \dots + n_k = n$.
+\end{lemma}
+
+\begin{proof}
+  First we show that all components of
+  combinatorial weights are integers.
+  Suppose not, and
+  let $i$ be the minimal number such
+  that $w_i \notin \Z$. Then we can make
+  admissible transformations from right
+  to left until it reaches the first slot,
+  which is a contradiction since
+  $w_1 = 0 \in \Z$.
+
+  Consider the lexicographic order
+  on $c {\Wt_n}$, i.e.
+  $(w_1, \dots, w_n) > (w_1', \dots, w_n')$
+  if there exists $i$ such that
+  $w_j = w_j'$ for each $1 \le j < i$
+  and $w_i > w_i'$. Let
+  $(w_1, \dots, w_n)$ be a maximal
+  element in this equivalence class.
+  We need to show that this maximal
+  element is of the desired form.
+
+  To do this, first take $n_1$ such that
+  $n_1 - 1 = \max\{w_i\}$. Let $k$
+  be the smallest index such that
+  $w_k = n_1 - 1$. We claim that
+  $k = n_1$ and $w_i = i - 1$ for all
+  $i < n_1$. Assume not. Then pick
+  the largest index $j < k$ with
+  $w_j \ne n_1 - 1 - (k - j)$. By the
+  choice of $k$, we have
+  $w_j < n_1$. We also have
+  $w_j \ge j - 1$ (otherwise one can
+  permute $j$ and $j + 1$, which
+  increases the order). Note that if
+  $w_j \ge j$, then we can make admissible
+  transformations to the left until
+  we arrive to $(w_j, w_j)$,
+  $(w_j, w_{j \pm 1}, w_j)$, or
+  $w_j$ in the first position, which are
+  all impossible. Thus $w_j = n_1 - 1 - (k - j)$
+  for all $j < k$. But $w_1 = 0$, so
+  $k = n_1$.
+
+  Thus we have shown that we can take
+  an element starting with
+  $0, 1, \dots, n_1 - 1$. Now if
+  $n_1 = n$, then we are done. Otherwise,
+  we need to prove that $w_{n_1 + 1} = -1$.
+  Note that $w_{n_1 + 1} \le n_1 - 1$
+  by our choice of $n_1$, and
+  $w_{n_1} \ne n_1 - 1$ since
+  $w_{n + 1} \ne w_n$. If
+  we move $w_{n + 1}$ to the left,
+  then we encounter
+  \[
+    (w_{n_1 + 1}, w_{n_1 + 1} + 1, w_{n_1 + 1})
+  \]
+  for any $w_{n + 1} \ge 0$. If
+  $w_{n + 1} < -1$, then we can move it
+  to the first position, which is impossible
+  since we always have $w_1 = 0$. So the only possibility
+  is $w_{n + 1} = -1$.
+
+  Now we can repeat the above argument
+  to get the rest of the form.
+\end{proof}
+
+\begin{remark}
+  Lemma \ref{lem:comb-weights}
+  implies the following:
+  \begin{enumerate}
+    \item $c {\Wt_n} = \Wt_n$;
+    \item ${\sim_c} = {\sim_r}$;
+    \item $n_1, \dots, n_k$ uniquely
+      characterize the equivalence class.
+  \end{enumerate}
+\end{remark}
+
+\begin{example}
+  Consider the following:
+  \begin{enumerate}
+    \item $\triv_4$ for $S_4$, i.e.
+      $(x, x, x, x)$.
+      Here $(w_1, w_2, w_3, w_4) = (0, 1, 2, 3)$, so
+      $k = 1$, $n_1 = 4$.
+    \item $\refl_4$ with path
+      $P = \triv_1 \to \dots \to \triv_i \to \refl_{i + 1} \to \dots \to \refl_n$. In
+      this case, we have seen that
+      \[
+        (w_1, \dots, w_n)
+        = (0, 1, \dots, i - 1, i, \dots, n - 2).
+      \]
+      For $\refl_4$, we can get
+      $(0, -1, 1, 2)$, $(0, 1, -1, 2)$,
+      $(0, 1, 2, -1)$. The last one has
+      $k = 2$, $n_1 = 3$, $n_2 = 1$.
+  \end{enumerate}
+\end{example}
+
+\begin{exercise}
+  Compute the combinatorial weights
+  for $\C^2$ (for $S_4$).
+\end{exercise}
+
+\section{Standard Young Tableaux}
+
+\begin{remark}
+  Recall there is a one-to-one
+  correspondence between partitions
+  $(n_1, \dots, n_k)$ of $n$ (satisfying
+  $n_1 \le \dots \le n_k$ and
+  $n_1 + \dots + n_k$) and
+  $\Irr(\C S_n)$. Also
+  recall \emph{Young tableaux}
+  for partitions.
+\end{remark}
+
+\begin{definition}
+  A \emph{standard Young tableau}
+  is a Young tableau
+  filled with numbers $\{1, \dots, n\}$
+  so that they strictly increase
+  from bottom to top and from left to right.
+  Denote by $\STY(n)$ the set of
+  standard Young tableaux (corresponding
+  to a partition of $n$).
+\end{definition}
+
+\begin{definition}
+  To a Young tableau $T$, assign its
+  \emph{content} as follows. Let
+  $(x_i, y_i)$ be the coordinates
+  of the box numbered $i$. Then the
+  content of the box is $x_i - y_i$.
+  The content of the tableau is
+  \[
+    c(T) = (x_1 - y_1, x_2 - y_2, \dots, x_n - y_n).
+  \]
+\end{definition}
+
+\begin{exercise}
+  Show that the map $T \mapsto cT$
+  is injective.
+\end{exercise}
