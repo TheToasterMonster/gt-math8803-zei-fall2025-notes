@@ -1,0 +1,307 @@
+\chapter{Sept.~22 --- Lie Groups}
+
+\section{Young Tableaux}
+
+\begin{remark}
+  Recall there is a one-to-one
+  correspondence between partitions
+  $(n_1, \dots, n_k)$ of $n$ (satisfying
+  $n_1 \le \dots \le n_k$ and
+  $n_1 + \dots + n_k$) and
+  $\Irr(\C S_n)$. Also
+  recall the \emph{Young tableau}
+  for a partition, which is consists
+  of $k$ rows of $n_k$
+  boxes stacked on top of each other,
+  where the $1$st row is at the top.
+\end{remark}
+
+\begin{definition}
+  A \emph{standard Young tableau}
+  is a Young tableau
+  filled with numbers $\{1, \dots, n\}$
+  so that they strictly increase
+  from bottom to top and from left to right.
+  Denote by $\SYT(n)$ the set of
+  standard Young tableaux (corresponding
+  to a partition of $n$).
+\end{definition}
+
+\begin{definition}
+  To a Young tableau $T$, assign its
+  \emph{content} as follows. Let
+  $(x_i, y_i)$ be the coordinates
+  of the box numbered $i$. Then the
+  content of the box is $x_i - y_i$.
+  The content of the tableau is
+  \[
+    c(T) = (x_1 - y_1, x_2 - y_2, \dots, x_n - y_n).
+  \]
+\end{definition}
+
+\begin{exercise}
+  Show that the map $T \mapsto cT$
+  is injective.
+\end{exercise}
+
+\begin{prop}
+  The map $T \mapsto c(T)$ is a bijection
+  $\SYT(n) \to c{\Wt_n}$, and the shape of
+  $T$ coincides with the
+  partition assigned to $n$.
+\end{prop}
+
+\begin{proof}
+  This is an exercise in combinatorics.
+\end{proof}
+
+\begin{definition}
+  The Young tableau with numbers
+  $1, \dots, n_1$ in the bottom row,
+  $n_1 + 1, \dots, n_1 + n_2$ in the
+  second-to-bottom row, and so on
+  is called the \emph{normal Young tableau}.
+\end{definition}
+
+\begin{corollary}
+  Let $\lambda$ be a Young tableau with
+  $n$ boxes and $V_\lambda$ the corresponding
+  $\C S_n$-module. Then there is a basis
+  $\{v_T\}$ in $V_\lambda$ which is labeled
+  by $\SYT(n)$ associated to $\lambda$.
+  Moreover, each $v_T$ is an eigenvector
+  of the Jucys-Murphy's elements such that
+  the eigenvalue of $J_i$ is the content
+  $x_i - y_i$ of the $i$th box.
+\end{corollary}
+
+\begin{remark}
+  Take
+  $(w_1, \dots, w_n) \in c{\Wt_n}$, and
+  consider $(w_1, \dots, w_{n - 1})$.
+  What does this mean in terms of
+  $\SYT(n)$? The new tableau $T'$ is
+  obtained from the original tableau $T$
+  by removing the box labeled $n$.
+\end{remark}
+
+\begin{corollary}
+  Let $\lambda$ be a partition of $n$
+  and $V_\lambda$ the corresponding
+  irrep of $\C S_n$.
+  As $\C S_{n - 1}$-modules,
+  \[
+    V_{\lambda}
+    \cong \bigoplus_{\mu} V_{\mu},
+  \]
+  where $\mu$ runs through all
+  (unlabeled) Young
+  tableaux obtained from $\lambda$ by
+  removing one box.
+\end{corollary}
+
+\begin{definition}
+  The \emph{Young graph} is the directed
+  graph whose vertices are Young
+  tableaux and we have an edge
+  $\mu \to \lambda$ if
+  $\mu$ is obtained from $\lambda$
+  by removing one box.
+\end{definition}
+
+\begin{corollary}
+  There is a graph isomorphism
+  between the Young graph and the
+  branching graph.
+\end{corollary}
+
+\begin{exercise}
+  Prove that tensoring any
+  $V_\lambda$ with $\sign_n$ gives a
+  transposed Young tableau.
+\end{exercise}
+
+\section{Lie Groups}
+
+\begin{remark}
+  We will denote a $C^\infty$ manifold by
+  $M$, and its tangent space at $m \in M$
+  by $T_m M$. Denote by
+  \[
+    TM = \bigsqcup_{m \in M} T_m M
+  \]
+  the tangent bundle of $M$, and
+  $\Vect(M)$ the sections of $TM$.
+  If $f : X \to Y$ is a $C^\infty$ map,
+  then we denote its differential at
+  $x \in X$ by
+  $T_x f : T_x X \to T_{f(x)} Y$.
+
+  Recall that a map
+  $f : X \to Y$ is an \emph{immersion}
+  if $\rank T_x f = \dim X$ for all
+  $x \in X$. In this case, by the inverse
+  function
+  theorem, we can choose
+  local coordinates around $x$ and
+  $f(x)$ such that
+  \[
+    f(x_1, \dots, x_n)
+    = (x_1, \dots, x_n, 0, \dots, 0).
+  \]
+  An \emph{immersed submanifold} $N \subseteq M$
+  is a subset with the structure of
+  a manifold such that $i : N \hookrightarrow M$
+  is an immersion (the topology of $N$
+  need not be inherited from $M$). An
+  \emph{embedded submanifold} $N \subseteq M$
+  is an immersed submanifold such that
+  $i : N \hookrightarrow M$ is also a
+  homeomorphism onto its image.
+\end{remark}
+
+\begin{example}
+  The figure eight curve
+  $\R \to \R^2$ is an immersed submanifold
+  but not embedded.
+\end{example}
+
+\begin{definition}
+  A  \emph{(real) Lie group} $G$ is a
+  group with a manifold structure such that
+  the multiplication
+  $G \times G \to G$ and
+  inversion $G \to G$ are
+  $C^\infty$ maps. A \emph{morphism}
+  of Lie groups is a $C^\infty$ map
+  $f$ such that
+  \[f(gh) = f(g) f(h) \quad \text{and} \quad f(1) = 1.\]
+\end{definition}
+
+\begin{definition}
+  A \emph{complex Lie group} is the
+  same as a real Lie group, except
+  with a complex manifold structure, i.e.
+  there are charts to $\C^n$ such that
+  the transition maps
+  are analytic.
+\end{definition}
+
+\begin{example}
+  The following are examples of
+  Lie groups:
+  \begin{enumerate}
+    \item $\R^n$ with addition.
+    \item $\R^* = \R \setminus \{0\}$ with
+      multiplication, which has two
+      components $\R_{\pm} = \{x \in \R : \pm x > 0\}$.
+    \item $S^1 = \{z \in \C : |z| = 1\}$ with
+      multiplication.
+    \item $\GL(n, \R) \subseteq \R^{n^2}$
+      with matrix multiplication.
+    \item $\SU(2) = \{A \in \GL(2, \C) : A \overline{A}^T = 1, \det A = 1\}$, or
+      \[
+        \SU(2) = \left\{
+          \begin{pmatrix}
+            \alpha & \beta \\
+            -\overline{\beta} & \alpha
+          \end{pmatrix}
+          : \alpha, \beta \in \C, |\alpha|^2 + |\beta|^2 = 1
+        \right\} \cong S^3 \subseteq \R^4.
+      \]
+      Note that $\SU(2)$ is a real
+      Lie group.
+    \item The \emph{classical groups}
+      $\SL(n, \R)$, $\SL(n, \C)$, $\OO(n, \R)$,
+      $\OO(n, \C)$, $\Sp(n, \R)$, $\Sp(n, \C)$, etc.
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}
+  Let $G$ be a (real or complex) Lie group.
+  Denote by $G^0$ the connected component
+  of the identity. Then $G^0$ is a normal
+  subgroup of $G$ and is a Lie group.
+  The quotient is a discrete group.
+\end{theorem}
+
+\begin{proof}
+  Note that the image of a connected
+  topological space under a continuous
+  map is connected, so the
+  inverse map sends $G^0 \to G^0$. The
+  same argument works for multiplication,
+  so $G^0$ is a Lie group.
+
+  To show that $G^0$ is normal, let
+  $h \in G^0$. Note that for any $g$,
+  the map $h \mapsto g h g^{-1}$ is
+  continuous, so $g h g^{-1}$ must lie
+  in the same connected component
+  $G^0$. Thus
+  $G^0$ is a normal subgroup of $G$.
+
+  Finally, the quotient is discrete since
+  $G^0$ is open and its cosets
+  partition $G$.
+\end{proof}
+
+\begin{theorem}
+  If $G$ is a connected (real or complex)
+  Lie group, then its universal cover
+  $\widetilde{G}$ has a canonical
+  structure of a Lie group such that
+  the covering map
+  $p : \widetilde{G} \to G$ is a morphism
+  of Lie groups, and
+  $\ker p \cong \pi_1(G)$ is discrete
+  and central.
+\end{theorem}
+
+\begin{definition}
+  A \emph{closed Lie subgroup} $H$ of a
+  (real or complex) Lie group $G$
+  is a subgroup which is a
+  submanifold (complex submanifold
+  in the complex case).
+\end{definition}
+
+\begin{theorem}[Cartan's theorem]
+  Let $G$ be a (real or complex) Lie group.
+  \begin{enumerate}
+    \item Any closed Lie subgroup
+      is closed in $G$.
+    \item Any closed subgroup of a Lie
+      group is a closed real Lie subgroup.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+  We have the following:
+  \begin{enumerate}
+    \item If $G$ is a connected (real or complex) Lie group
+      and $U$ is a neighborhood of
+      $1$, then $U$ generates $G$.
+    \item Let $f : G_1 \to G_2$ be a
+      morphism of (real or complex) Lie groups,
+      where $G_2$ is connected and
+      the differential
+      $T_1 f : T_1 G_1 \to T_1 G_2$ at
+      the identity is
+      surjective. Then $f$ is surjective.
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  (1) Assume $H$ is a subgroup generated
+  by $U$. Then $H$ is open in $G$, since
+  for any $h \in H$, $h U$ is a
+  neighborhood of $h$ in $G$. Since
+  $H$ is an open subset of a
+  manifold, $H$ is a submanifold. Then
+  $H$ is a closed Lie subgroup of $G$,
+  so it is also closed. Thus $H = G$ since
+  $G$ is connected.
+
+  (2) Check this as an exercise.
+\end{proof}
