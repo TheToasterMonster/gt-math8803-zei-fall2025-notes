@@ -1,0 +1,375 @@
+\chapter{Sept.~24 --- Lie Groups, Part 2}
+
+\section{More on Lie Groups}
+
+\begin{theorem}
+  Let $G$ be a (real or complex) Lie group
+  with $\dim G = n$, and
+  $H \subseteq G$ a closed Lie subgroup
+  with $\dim H = k$. Then the coset
+  space $G / H$ has the structure of a
+  manifold with dimension $n - k$, such
+  that $p : G \to G / H$ is a fiber
+  bundle with fibers diffeomorphic
+  to $H$. The tangent space at $\overline{1} = p(1)$
+  is given by $T_1 G / T_1 H$.
+\end{theorem}
+
+\begin{proof}
+  Consider $p : G \to G / H$, which
+  sends $g \mapsto \overline{g} = p(g)$.
+  Note that $gH \subseteq G$ is a
+  submanifold (since multiplication by
+  $g$ is a diffeomorphism). Choose a
+  submanifold $M$ which is transversal
+  to $gH$ (i.e. such that
+  $T_g G = T_g(gH) \oplus T_g M$).
+  Let $U$ be a
+  sufficiently small neighborhood of $g$
+  so that $UH = \{uh : u \in U, h \in H\}$
+  is open in $G$, which exists by the
+  inverse function theorem applied to
+  the multiplication map
+  $U \times H \to G$. Then let
+  $\overline{U} = p(U)$. Since
+  $p^{-1}(\overline{U}) = U$ is open,
+  $\overline{U}$ is an open neighborhood
+  of $\overline{g}$ in $G / H$.
+  This gives $p : G \to G / H$ the
+  natural structure of a fiber bundle.
+
+  For the tangent space, consider
+  the map $T_1 p : T_1 G \to T_{\overline{1}} G / H$, and
+  note that
+  $\ker(T_1 p) = T_1 H$.
+\end{proof}
+
+\begin{corollary}
+  Let $H$ be a closed Lie subgroup of $G$.
+  \begin{enumerate}
+    \item If $H$ is connected, then
+      the set of connected components
+      satisfies $\pi_0(G) = \pi_0(G / H)$.
+    \item If $G, H$ are connected, then
+      there is an exact sequence
+      \[
+        \pi_2(G / H)
+        \longrightarrow \pi_1(H)
+        \longrightarrow \pi_1(G)
+        \longrightarrow \pi_1(G / H)
+        \longrightarrow \{1\}.
+      \]
+  \end{enumerate}
+\end{corollary}
+
+\begin{remark}
+  Often, $\pi_2(G / H)$ and
+  $\pi_1(G / H)$ are known, which allows
+  us to compute $\pi_1(G)$.
+\end{remark}
+
+\begin{example}
+  Let $G_1 = \R$ and $G_2 = \R^2 / \Z^2$
+  (the torus). Define
+  $f : G_1 \to G_2$ by
+  \[
+    f(t) = (t \Mod{\Z}, \alpha t \Mod{\Z}),
+  \]
+  for some fixed irrational $\alpha$. Then
+  the image of $f$ is everywhere dense
+  in $G_2$.
+\end{example}
+
+\begin{definition}
+  A \emph{Lie subgroup} $H$ in a (real or
+  complex)
+  Lie group $G$ is an immersed submanifold
+  which is also a subgroup.
+\end{definition}
+
+\begin{theorem}
+  Let $f : G_1 \to G_2$ be a morphism
+  (in the real or complex sense). Then
+  $H = \ker f$ is a normal closed Lie
+  subgroup of $G_1$, and $f$ gives rise
+  to an injective map $G_1 / H \to G_2$
+  which is an immersion. In particular,
+  $\im f$ is a Lie subgroup of $G_2$.
+  If $\im f$ is an embedded submanifold,
+  then it is a closed Lie subgroup.
+  Moreover, $f$ gives an isomorphism
+  (of Lie groups)
+  $G_1 / H \cong \im f$.
+\end{theorem}
+
+\begin{proof}
+  We will prove this later using
+  Lie algebras.
+\end{proof}
+
+\section{Actions of Lie Groups on Manifolds}
+
+\begin{definition}
+  An \emph{action} of a real Lie group $G$
+  on a real manifold $M$ is an
+  assignment
+  \[
+    g \mapsto \rho(g) \in \Diff(M)
+  \]
+  with $\rho(1) = \id$ and
+  $\rho(g) \rho(h) = \rho(gh)$,
+  such that
+  the map $G \times M \to M$ by
+  $(g, m) \mapsto g . m$ is smooth.
+  When $G$ is a complex Lie group and $M$
+  is a complex manifold, we require
+  $G \times M \to M$ to be analytic.
+\end{definition}
+
+\begin{example}
+  The following are examples of actions
+  on Lie groups:
+  \begin{enumerate}
+    \item $\GL(n, \R)$ acts on $\R^n$.
+    \item $\OO(n, \R)$ acts on
+      $S^{n - 1} \subseteq \R^n$.
+    \item $\U(n)$ acts on
+      $S^{2n - 1} \subseteq \C^n$.
+  \end{enumerate}
+\end{example}
+
+\begin{definition}
+  A \emph{representation} of a (real or
+  complex) Lie group $G$ is a vector space
+  $V$ (complex if $G$ is complex and real or
+  complex if $G$ is real) together with
+  a homomorphism $\rho : G \to \GL(V)$.
+  If $V$ is finite-dimensional, we require
+  $\rho$ to be smooth (or analytic if
+  $G$ is complex).
+
+  A \emph{morphism} between two
+  representations $\rho_V$ and
+  $\rho_W$ is a map
+  $f : V \to W$ such that
+  it commutes with the $G$-action, i.e.
+  $f \rho_V(g) = \rho_W(g) f$ for all
+  $g \in G$.
+\end{definition}
+
+\begin{remark}
+  Any action of $G$ on a manifold $M$
+  gives the following infinite-dimensional
+  representations:
+  \begin{enumerate}
+    \item Space of functions
+      (the space of analytic functions
+      $\mathcal{O}(M)$ in the complex
+      case or $C^\infty(M)$ in the real case),
+      given by
+      $\rho(g) f(m) = f(g^{-1} . m)$.
+    \item Vector fields on $M$
+      (denoted $\Vect(M)$), given by
+      the \emph{pushforward}
+      \[(\rho(g) v)(m) = g_* v = T_{g^{-1} . m} (g) (v(g^{-1} . m)).\]
+    \item Assume $m$ is a fixed
+      point of $G$, i.e. $g . m = m$
+      for all $g \in G$. Then $G$ acts
+      on $T_m M$ by differentials
+      \[
+        T_m g : T_m M \to T_m M.
+      \]
+      This representation is
+      finite-dimensional if $\dim M < \infty$.
+  \end{enumerate}
+\end{remark}
+
+\section{Orbits and Homogeneous Spaces}
+\begin{definition}
+  Define the \emph{orbit} of a point
+  $m \in M$ to be
+  \[\Ocal_m = G . m = \{g . m : g \in G\}.\]
+  and the \emph{stabilizer} of $m$ to be
+  $G_m = \{g \in G : g . m = m\}$.
+\end{definition}
+
+\begin{theorem}
+  Let $M$ be a manifold with action of
+  Lie group $G$ (or complex manifold
+  with action of complex $G$). Then
+  for all $m \in M$, the stabilizer
+  $G_m$ is a closed Lie subgroup of $G$,
+  and $g \mapsto g . m$ forms an
+  injective immersion
+  $G / G_m \hookrightarrow M$ whose
+  image coincides with $\Ocal_m$.
+\end{theorem}
+
+\begin{corollary}
+  The orbit $\Ocal_m$ is an immersed
+  submanifold in $M$ with tangent
+  space \[T_m \Ocal_m = T_1 G / T_1 G_m.\]
+  If $\Ocal_m$ is a submanifold, then
+  $g \mapsto g . m$ gives a diffeomorphism
+  $G / G_m \to \Ocal_m$.
+\end{corollary}
+
+\begin{definition}
+  If the action of $G$ on $M$ is
+  transitive (i.e. there is just one orbit),
+  then we call $M$ a
+  \emph{homogeneous space} for $G$.
+\end{definition}
+
+\begin{corollary}
+  Let $M$ be a $G$-homogeneous space.
+  Then the map $G \to M$
+  by $g \mapsto g . m$ is a fiber bundle
+  over $M$ with fiber $G_m$.
+\end{corollary}
+
+\begin{example}
+  Consider the following:
+  \begin{enumerate}
+    \item $\SO(n, \R)$ acting
+      on $S^{n - 1} \subseteq \R^n$.
+      Then $S^{n - 1}$ is a
+      homogeneous space, and the stabilizer
+      of any point in $S^{n - 1}$
+      (which can be moved to $(1, 0, \dots, 0)$)
+      is $\SO(n - 1, \R)$. So we have
+      the diagram
+      \begin{center}
+      \begin{tikzcd}
+        \SO(n - 1, \R) \ar[r] &
+        \SO(n, \R) \ar[d, "p"] \\
+        & S^{n - 1}
+      \end{tikzcd}
+      \end{center}
+    \item $\SU(n)$ acting on
+      $S^{2n - 1} \subseteq \C^n$.
+      Here we have
+      \begin{center}
+      \begin{tikzcd}
+        \SU(n - 1) \ar[r] &
+        \SU(n) \ar[d] \\
+        & S^{2n - 1}
+      \end{tikzcd}
+      \end{center}
+  \end{enumerate}
+\end{example}
+
+\begin{remark}
+  The action of $G$ can be used to
+  define a smooth structure on $M$.
+  If $M$ is a set with a transitive
+  action by $G$, then $M$ is in
+  bijection with $G / H$, where
+  $H = \Stab_G(m)$. Then $M$ has a natural
+  structure of a manifold of dimension
+  $\dim G - \dim H$.
+\end{remark}
+
+\begin{example}
+  A \emph{(full) flag} in $\R^n$ is
+  a collection of subspaces
+  \[
+    \{0\} \subseteq V_1 \subseteq V_2 \subseteq \cdots \subseteq V_n = \R^n,
+  \]
+  where $\dim V_i = i$. Denote by
+  $\mathcal{F}_n(\R)$ the space of
+  all flags in $\R^n$. There is an
+  action of $\GL(n, \R)$ on
+  $\mathcal{F}_n(\R)$.
+  We can move any flag to the
+  \emph{standard flag}
+  \[
+    V^{\mathrm{st}}
+    = \{0\} \subseteq \langle e_1 \rangle
+    \subseteq \langle e_1, e_2 \rangle
+    \subseteq \cdots
+    \subseteq \langle e_1, \dots, e_n \rangle,
+  \]
+  which has stabilizer
+  $\Stab V^{\mathrm{s, t}} = \B(n, R) \subseteq \GL(n, \R)$,
+  the subgroup upper-triangular
+  matrices, so
+  \[
+    \mathcal{F}_n(\R)
+    \cong \frac{\GL(n, \R)}{\B(n, \R)}.
+  \]
+  Now $\dim \B(n, \R) = n(n + 1) / 2$, so
+  we can see that
+  \[
+    \dim \mathcal{F}_n(\R)
+    = \dim \GL(n, \R) - \dim \B(n, \R)
+    = n^2 - \frac{n(n + 1)}{2}
+    = \frac{n(n - 1)}{2}.
+  \]
+\end{example}
+
+\section{Actions of a Lie Group on Itself}
+
+\begin{remark}
+  We can define actions
+  $L_g : G \to G$ and
+  $R_g : G \to G$ by
+  \[
+    L_g(h) = gh \quad\text{and}\quad
+    R_g(h) = hg^{-1}.
+  \]
+  There is also an \emph{adjoint action}
+  $\Ad_g : G \to G$
+  by $\Ad_g(h) = L_g R_g(h) = g h g^{-1}$.
+
+  For $v \in T_m G$, we will
+  write $g . v$ for $T_m L_g$
+  and $v . g$ for $T_m R_{g^{-1}}$.
+\end{remark}
+
+\begin{exercise}
+  Check that the above
+  agrees with matrix multiplication
+  for $G = \GL(n, \R)$.
+\end{exercise}
+
+\begin{remark}
+  Note that $\Ad_g$ sends
+  $1 \mapsto 1$, so there is a
+  representation
+  $\Ad_g : T_1 G \to T_1 G$, called the
+  \emph{adjoint representation}
+  of a Lie group $G$.
+\end{remark}
+
+\begin{definition}
+  A vector field $v \in \Vect(G)$ is
+  called \emph{left-invariant}
+  if $g . v = v$ for all $g \in G$, and
+  $v$ is called
+  \emph{right-invariant} if
+  $v . g = v$ for all $g \in G$.
+\end{definition}
+
+\begin{theorem}
+  The map $v \mapsto v(1)$ (where $1$ is
+  the identity of $G$) defines an
+  isomorphism of the vector space
+  of left-invariant vector fields on $G$
+  with $T_1 G$. Similarly, one has the
+  same isomorphism for the
+  vector space of right-invariant
+  vector fields.
+\end{theorem}
+
+\begin{theorem}
+  The map $v \mapsto v(1)$ defines an
+  isomorphism of the vector space of
+  bi-invariant vector fields on $G$
+  with the vector space of invariants
+  under the adjoint action, i.e.
+  \[
+    (T_1 G)^{\Ad G}
+    = \{x \in T_1 G : \Ad_g(x) = x \text{ for all } g \in G\}.
+  \]
+\end{theorem}
