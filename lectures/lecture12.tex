@@ -1,0 +1,361 @@
+\chapter{Sept.~29 --- The Exponential Map}
+
+\section{Classical Lie Groups}
+
+\begin{example}
+  Let $\K$ be $\R$ or $\C$. The
+  \emph{classical Lie groups} are
+  \begin{enumerate}
+    \item the \emph{general linear group} $\GL(n, \K)$,
+    \item the \emph{special linear group} $\SL(n, \K)$,
+    \item the \emph{orthogonal group} $\OO(n, \K)$,
+    \item
+      the \emph{special orthogonal groups}
+      $\SO(n, \K)$
+      and $\SO(p, q)$,
+    \item the \emph{symplectic group}
+      $\Sp(n, \K)$,
+    \item the \emph{unitary groups} $\U(n)$ and $\SU(n)$
+      which are real Lie groups,
+    \item the \emph{compact symplectic group} $\mathrm{USp}(n) = \Sp(n, \C) \cap \SU(2n)$
+      which is a real Lie group.
+  \end{enumerate}
+\end{example}
+
+\begin{remark}
+  How do we compute the dimensions
+  of these classical Lie groups?
+\end{remark}
+
+\section{The Exponential Map for Matrix Groups}
+
+\begin{remark}
+  For $\GL(n, \K)$, write its
+  Lie algebra as $\gl(n, \K)$.
+\end{remark}
+
+\begin{definition}
+  For $x \in \Mat_n(\K) = \gl(n, \K)$,
+  define the \emph{exponential map}
+  \[
+    \exp(x) = \sum_{k = 0}^\infty \frac{x^k}{k!}.
+  \]
+  This defines an analytic
+  map $\gl(n, \K) \to \GL(n, \K)$
+  with inverse map in a neighborhood
+  of $I$ given by
+  \[
+    \log(1 + x)
+    = \sum_{k = 1}^\infty \frac{(-1)^{k + 1} x^k}{k}.
+  \]
+\end{definition}
+
+\begin{theorem}
+  We have the following:
+  \begin{enumerate}
+    \item $\log(\exp(x)) = x$ and
+      $\exp(\log(x)) = x$.
+    \item $\exp(x) = 1 + x + \dots$,
+      $\exp(0) = 1$, and
+      $d \exp(0) = \id$.
+    \item If $xy = yx$, then
+      $\exp(x + y) = \exp(x) \exp(y)$;
+    if $X$ and $Y$ commute (for
+      $X, Y$ in some neighborhood of $I$), then
+      $\log(XY) = \log(X) + \log(Y)$;
+      also,
+      $\exp(-x) \exp(x) = \id$, so
+      $\exp(x) \in \GL(n, \K)$.
+    \item For any $x \in \gl(n, \K)$,
+      the map $\K \to \GL(n, \K)$
+      by $t \mapsto \exp(tx)$ is a
+      morphism of Lie groups. So in
+      particular one has
+      $\exp((t + s)x) = \exp(tx) \exp(sx)$.
+    \item $\exp(A x A^{-1}) = A \exp(x) A^{-1}$
+      and $\exp(x^T) = (\exp(x))^T$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  For any classical subgroup
+  $G \subseteq \GL(n, \K)$, there exists
+  a vector space $\g \subseteq \gl(n, \K)$
+  such that for some neighborhood
+  $U$ of $1$ in $\GL(n, \K)$ and
+  some neighborhood $V$ of $0$ in
+  $\gl(n, \K)$, the following
+  maps are inverses of each other:
+  \begin{center}
+    \begin{tikzcd}
+      (U \cap G) \arrow[r, shift left, "\log"] & (V \cap \g) \arrow[l, shift left, "\exp"]
+    \end{tikzcd}
+  \end{center}
+\end{theorem}
+
+\begin{proof}
+  We have already proved this for
+  $\GL(n, \K)$ and $\g = \gl(n, \K)$.
+
+  Now consider $\SL(n, \K)$. Let
+  $g \in \SL(n, \K)$ be close enough
+  to the identity, so that
+  $g = \exp(x)$ for some $x \in \gl(n, \K)$.
+  Then $1 = \det(g) = \det(\exp(x))$.
+  Now recall that
+  \[
+    \det(\exp(x)) = \exp(\tr x),
+  \]
+  which can be proved using the
+  Jordan normal form. So this
+  $\deg(g) = 1$ if and only if
+  $\tr x = 0$. Thus we can take
+  $\g = \slg(n, \K) = \{x \in \gl(n, \K) : \tr x = 0\}$.
+
+  Next consider $\OO(n, \K)$
+  and $\SO(n, \K)$. For
+  $g \in \OO(n, \K)$, we have
+  $g^T g = I$.
+  Writing $g = \exp(x)$ and
+  $g^T = \exp(x^T)$, we have
+  $\exp(x^T) \exp(x) = I$
+  since $x$ and $x^T$ commute.
+  This translates to
+  $x + x^T = 0$, so
+  \[\mathfrak{o}(n, \K) = \{x \in \gl(n, \K) : x + x^T = 0\}.\]
+  Note that
+  $\mathfrak{o}(n, \K) = \mathfrak{so}(n, \K)$
+  ($x + x^T = 0$ implies $\tr x = 0$)
+  since $\SO(n, \K)$ is a neighborhood
+  of $I$.
+
+  For $\U(n)$, one can check
+  we have the condition
+  $x + x^\dagger = 0$
+  (where $x^\dagger$ denotes the
+  conjugate transpose of $x$)
+  on the Lie algebra. This time,
+  we do not automatically get
+  $\tr x = 0$, so the Lie algebra
+  of $\SU(n)$ has the
+  two conditions
+  $x + x^\dagger = 0$ and $\tr x = 0$.
+
+  One can check the remaining
+  classical groups similarly.
+\end{proof}
+
+\begin{corollary}
+  Each classical group is a Lie group
+  with tangent space at the identity
+  $T_1 G = \g$
+  and $\dim G = \dim \g$. Also,
+  $\U(n)$, $\SU(n)$, and $\mathrm{USp}(n)$
+  are real Lie groups, while
+  $\GL(n, \K)$, $\SL(n, \K)$,
+  $\SO(n, \K)$, $\OO(n, \K)$,
+  and $\Sp(n, \K)$ are real or complex
+  depending on $\K$.
+\end{corollary}
+
+\section{The Exponential Map in General}
+
+\begin{remark}
+  For $\g = T_1 G$, we want to
+  define $\exp : \g \to G$ for a
+  general Lie group $G$.
+\end{remark}
+
+\begin{prop}
+  Let $G$ be a (real or complex) Lie
+  group, $\g = T_1 G$, and
+  $x \in \g$. Then there exists a unique
+  morphism of Lie groups
+  $\gamma_x : \K \to G$
+  such that $\gamma_x(0) = x$.
+  Here $\gamma_x(t)$ is known as
+  a \emph{1-parameter subgroup}.
+\end{prop}
+
+\begin{proof}
+  Motivated by the matrix case,
+  where $\gamma_x(t) = \exp(tx)$
+  satisfies $\dot{\gamma}(t) = \gamma(t) \dot{\gamma}(0) = \gamma(t) x$, we
+  define the differential equation
+  \[
+    \dot{\gamma}(t)
+    = T_1 L_{\gamma(t)} \dot{\gamma}(0),
+  \]
+  for which it suffices to construct
+  $\gamma$ satisfying
+  $\gamma(t + s) = \gamma(t) \gamma(s)$
+  by the uniqueness of solutions to
+  the differential equation. So it
+  suffices to show that such a $\gamma$
+  exists. Let
+  $\gamma(t) = \Phi^t(1)$ and
+  $\gamma(t + s) = \Phi^{t + s}(1)$,
+  where $\Phi$ is the flow of
+  a left-invariant vector field.
+  By left-invariance, we have
+  \[
+    \Phi^t(g_1 g_2) = g_1 \Phi^t(g_2)
+    \quad \text{and} \quad
+    \Phi^{t + s}(1)
+    = \Phi^s(\Phi^t(1))
+    = \Phi^s(\gamma(t) \cdot 1)
+    = \gamma(t) \Phi^s(1)
+    = \gamma(t) \gamma(s).
+  \]
+  Thus $\gamma(t + s) = \gamma(t) \gamma(s)$, and
+  we get the desired map
+  $\gamma_x : \K \to G$.
+\end{proof}
+
+\begin{remark}
+  The uniqueness of the
+  $1$-parameter subgroups implies that
+    $\gamma_x(\lambda t)
+    = \gamma_{\lambda x}(t)$
+  since
+  \[
+    \left.\frac{d \gamma_x(\lambda t)}{dt}\right|_{t = 0}
+      = \lambda x.
+  \]
+\end{remark}
+
+\begin{example}
+  Let $G = (\R, +)$ with
+  $\g = \R$. Then for $a \in \g$,
+  we have $\gamma_a(t) = ta$
+  and $\exp(a) = a$.
+\end{example}
+
+\begin{example}
+  Let $G = S^1 = \R / \Z = \{z \in \C : |z| = 1\}$, where
+  the identification
+  $\R / \Z \to \{z \in \C : |z| = 1\}$
+  is given by
+  $\theta \mapsto e^{2 \pi i \theta}$
+  for $\theta \in \R / \Z$.
+  Then $\g = \R$, and for $a \in \g$,
+  \[
+    \exp(a) = a \Mod{\Z}
+    \quad \text{or} \quad
+    \exp(a) = e^{2\pi i a},
+  \]
+  depending on if we view $S^1$
+  as $\R / \Z$ or
+  as $\{z \in \C : |z| = 1\}$.
+\end{example}
+
+\begin{prop}
+  Let $G$ be a (real or complex) Lie
+  group.
+  \begin{enumerate}
+    \item Let $v$ be a left-invariant
+      vector field on $G$. Then
+      time flow of the vector
+      field $v$ is given by
+      $g \mapsto g \exp(tx)$, where
+      $x = v(1)$.
+    \item Let $v$ be a right-invariant
+      vector field on $G$. Then the time
+      flow of the vector field $v$ is given by
+      $g \mapsto \exp(tx) g$, where
+      $x = v(1)$.
+  \end{enumerate}
+\end{prop}
+
+\begin{theorem}[Summary]
+  Let $G$ be a (real or complex)
+  Lie group and
+  $\g = T_1 G$. Then
+  \begin{enumerate}
+    \item $\exp(x) = 1 + x + \dots$,
+      $\exp(0) = 1$, and $T_0 \exp : T_1 G \xrightarrow{\id} T_1 G$
+    \item The exponential map is a
+      diffeomorphism (analytic map
+      for complex $G$) between some
+      neighborhood of $0$ in $\g$ and
+      some neighborhood of $1$ in $G$.
+    \item $\exp((t + s)x) = \exp(tx) \exp(sx)$
+      for all $t, s \in \K$.
+    \item For any morphism of
+      Lie groups $\varphi : G_1 \to G_2$ and
+      any $x \in T_1 G_1$, we have
+      \[
+        \exp(T_1 \varphi(x))
+        = \varphi(\exp(x)).
+      \]
+    \item For any $g \in G$ and
+      $x \in \g$, we have
+      $g \exp(x) g^{-1}
+        = \exp(\mathrm{Ad}_g x)$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  (4) Note that $\varphi(\exp(tx))$
+  is a one-parameter subgroup
+  with tangent vector at identity
+  \[
+    \left.\frac{d}{dt}\right|_{t = 0}
+      \varphi(\exp(tx))
+      = T_1 \varphi \cdot x.
+  \]
+  By the uniqueness of
+  one-parameter subgroups, this must
+  be equal to $\exp(T_1 \varphi \cdot x)$.
+
+  $(5)$ This follows
+  from $(4)$ by taking
+  $\varphi$ to be conjugation by $g$.
+\end{proof}
+
+\begin{prop}
+  Let $G_1, G_2$ be (real or complex)
+  Lie groups. If $G_1$ is connected,
+  then any Lie group morphism
+  $\varphi : G_1 \to G_2$ is
+  uniquely determined by the
+  linear map
+  $T_1 \varphi : T_1 G_1 \to T_1 G_2$.
+\end{prop}
+
+\begin{example}
+  Consider $\SO(3, \R)$, and let
+  \[
+    J_x =
+    \begin{pmatrix}
+      0 & 0 & 0 \\
+      0 & 0 & -1 \\
+      0 & 1 & 0
+    \end{pmatrix}, \quad
+    J_y =
+    \begin{pmatrix}
+      0 & 0 & 1 \\
+      0 & 0 & 0 \\
+      -1 & 0 & 0
+    \end{pmatrix}, \quad
+    J_y =
+    \begin{pmatrix}
+      0 & -1 & 0 \\
+      1 & 0 & 0 \\
+      0 & 0 & 0
+    \end{pmatrix},
+  \]
+  which form a basis for
+  $\g = \mathfrak{so}(3, \R)$.
+  Then one can check that
+  \[
+    \exp(t J_z) =
+    \begin{pmatrix}
+      \cos t & -\sin t & 0 \\
+      \sin t & \cos t & 0 \\
+      0 & 0 & 1
+    \end{pmatrix},
+  \]
+  with similar formulas
+  for $\exp(t J_x)$ and $\exp(t J_y)$.
+\end{example}
