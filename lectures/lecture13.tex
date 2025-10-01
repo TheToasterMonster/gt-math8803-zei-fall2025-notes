@@ -1,0 +1,409 @@
+\chapter{Oct.~1 --- Lie Algebras}
+
+\section{Commutator Structure}
+
+\begin{remark}
+  Recall that for small enough
+  $x, y \in \g = T_1 G$, we have
+  \[
+    \exp(x) \exp(y)
+    = \exp(\mu(x, y)), \quad
+    \mu(x, y) \in \g.
+  \]
+\end{remark}
+
+\begin{lemma}
+  The Taylor series for $\mu(x, y)$
+  is given by
+  \[
+    \mu(x, y) = x + y + \lambda(x, y)
+    + \dots,
+  \]
+  where $\dots$ stands for
+  higher order terms in $x, y$, and
+  $\lambda : \g \times \g \to \g$
+  is bilinear and skew-symmetric.
+\end{lemma}
+
+\begin{proof}
+  We can write
+  $\mu(x, y) = \alpha_1(x) + \alpha_2(y) + Q_1(x) + Q_2(y) + \lambda(x, y) + \dots$,
+  where $\alpha_1, \alpha_2$ are
+  linear maps, $Q_1, Q_2$ are quadratic forms,
+  and $\lambda$ is bilinear.
+  Setting $y = 0$ gives
+  $\mu(x, 0) = x$, so
+  $\alpha_1 = x$ and $Q_1 = 0$. Similarly,
+  setting $x = 0$ gives $\alpha_2 = y$
+  and $Q_2 = 0$. So it suffices to
+  show that $\lambda$ is skew-symmetric.
+  To see this, note that
+  $\exp(x) \exp(x) = \exp(2x)$, so
+  $\lambda(x, x) = 0$, which implies
+  $\lambda$ is skew-symmetric.
+\end{proof}
+
+\begin{definition}
+  A \emph{commutator} of
+  two elements $x, y \in \g$ is
+  $[x, y] = 2\lambda(x, y)$.
+\end{definition}
+
+\begin{prop}
+  We have the following:
+  \begin{enumerate}
+    \item Let $\varphi : G_1 \to G_2$
+      be a morphism of (real or complex)
+      Lie groups and $T_1 \varphi : \g_1 \to \g_2$.
+      Then
+      \[
+        T_1 \varphi[x, y]
+        = [T_1 \varphi x, T_1 \varphi y]
+        \quad \text{for all $x, y \in \g_1$}.
+      \]
+    \item The adjoint action of
+      $G$ on $\g$ satisfies
+      $\Ad_g[x, y] = [\Ad_g x, \Ad_g y]$.
+    \item $\exp(x) \exp(y) \exp(-x) \exp(-y) = \exp([x, y] + \dots)$,
+      where $\dots$ denotes
+      higher order terms in $x, y$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  (1) This follows from the fact that
+  morphisms ``commute'' with the
+  exponential map.
+
+  (2) Apply (1) to the conjugation
+  morphism $\varphi(h) = g h g^{-1}$.
+\end{proof}
+
+\begin{corollary}
+  If $G$ is a commutative Lie group,
+  then $[x, y] = 0$ for all $x, y \in \g$.
+\end{corollary}
+
+\begin{example}
+  Consider a Lie subgroup
+  $G \subseteq \GL(n, \K)$.
+  Then $[x, y] = xy - yx$
+  (expand $\log(e^x e^y)$).
+\end{example}
+
+\begin{remark}
+  Consider $[\cdot, \cdot] : \g \times \g \to \g$
+  and associate to
+  a morphism $\varphi$ of Lie groups
+  to a morphism $T_1 \varphi$
+  of $\g$. Note that there is a
+  representation
+  $\Ad : G \to \GL(\g)$ given by
+  $g \mapsto \Ad_g$.
+\end{remark}
+
+\begin{lemma}
+  $\ad = T_1{\Ad} : \g \to \gl(\g)$
+  is a map of tangent spaces
+  satisfying
+  \begin{enumerate}
+    \item $\ad_x y = [x, y]$,
+    \item $\Ad_{\exp(x)} = \exp(\ad_x)$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  By definition, we have
+  \[
+    \Ad_g y
+    = \left.\frac{d}{dt}\right|_{t = 0}
+      g \exp(ty) g^{-1}.
+  \]
+  Then we can write
+  \begin{align*}
+    \ad_x y
+    &= \left.\frac{d}{ds}\right|_{s = 0}
+      \left.\frac{d}{dt}\right|_{t = 0}
+        \exp(sx) \exp(ty) \exp(-sx) \\
+    &= \left.\frac{d}{ds}\right|_{s = 0}
+    \left.\frac{d}{dt}\right|_{t = 0}
+      \exp(ty + ts[x, y] + \dots)
+    = [x, y],
+  \end{align*}
+  which proves (1). Then
+  (2) follows since
+  $\Ad$ is a morphism of Lie groups.
+\end{proof}
+
+\section{Lie Algebras}
+\begin{example}
+  For matrices, we have
+  $e^x A e^{-x} = e^{\ad_x} A$,
+  where $\ad_x = [x, \cdot]$.
+\end{example}
+
+\begin{theorem}\label{thm:jacobi}
+  Let $G$ be a (real or complex)
+  Lie group, $\g = T_1 G$, and
+  $[\cdot, \cdot] : \g \times \g \to \g$
+  the commutator.
+  Then $[\cdot, \cdot]$ satisfies the
+  following (equivalent) versions of
+  the \emph{Jacobi identity}:
+  \begin{enumerate}
+    \item $[x, [y, z]] = [[x, y], z] + [y, [x, z]]$,
+    \item $[x, [y, z]] + [y, [z, x]] + [z, [x, y]] = 0$,
+    \item $\ad_x [y, z] = [\ad_x y, z] + [y, \ad_x z]$,
+    \item $\ad_{[x, y]} = \ad_x \ad_y - \ad_y \ad_x$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  These are clearly all equivalent,
+  so it suffices to prove (4).
+  Let $\Ad : G \to \GL(\g)$ and
+  note that
+  $\ad : \g \to \gl(\g)$ preserves
+  the commutator. In $\gl(\g)$, we have
+  $[A, B] = AB - BA$, so
+  \[
+    \ad_{[x, y]}
+    = \ad_x \ad_y - \ad_y \ad_x.
+  \]
+  This proves the identity (4).
+\end{proof}
+
+\begin{definition}
+  A \emph{Lie algebra} over a field $\K$
+  is a vector space $\g$ with a
+  bilinear map $[\cdot, \cdot] : \g \times \g \to \g$
+  which is skew-symmetric and
+  satisfies the Jacobi identity.
+\end{definition}
+
+\begin{example}
+  Any vector space has a structure of a
+  Lie algebra on it by $[v, v] = 0$.
+  This is called the \emph{abelian Lie algebra}.
+\end{example}
+
+\begin{example}
+  Any associative algebra over $\K$
+  can be made into Lie algebra
+  by $[x, y] = xy - yx$.
+\end{example}
+
+\begin{theorem}
+  Let $G$ be a (real or complex)
+  Lie group. Then $\g = T_1 G$ has a
+  canonical structure of a Lie algebra
+  with commutator defined as
+  $2\lambda(x, y)$. We sometimes write
+  $\g = \Lie(G)$.
+  Moreover, every morphism
+  of Lie groups $\varphi : G_1 \to G_2$
+  induces a morphism of Lie algebras
+  $\varphi_* : \g_1 \to \g_2$.
+  If $G$ is connected, then the
+  map $\Hom(G_1, G_2) \to \Hom(\g_1, \g_2)$
+  by $\varphi \mapsto \varphi_*$
+  is injective.
+\end{theorem}
+
+\begin{definition}
+  Let $\g$ be a Lie algebra over $\K$.
+  A subspace $\mathfrak{h} \subseteq \g$
+  is called a \emph{Lie subalgebra}
+  if it is closed under the commutator,
+  and $\mathfrak{h} \subseteq \g$
+  is called an \emph{ideal} if
+  $[x, y] \in \mathfrak{h}$
+  for all $x \in \g$ and
+  $y \in \mathfrak{h}$.
+\end{definition}
+
+\begin{corollary}
+  If $\mathfrak{h}$ is an ideal in
+  $\g$, then
+  $\g / \mathfrak{h}$ has a canonical
+  structure of a Lie algebra.
+\end{corollary}
+
+\begin{theorem}
+  Let $G$ be a (real or complex)
+  Lie group and $\g = \Lie(G)$.
+  \begin{enumerate}
+    \item Let $H$ be a subgroup in $G$
+      (not necessarily a closed Lie
+      subgroup). Then
+      $\mathfrak{h} = T_1 H$
+      is a Lie subalgebra in $\g$.
+    \item Let $H$ be a normal closed
+      Lie subgroup in $G$. Then
+      $\mathfrak{h} = T_1 H$ is an ideal
+      in $\g$ and
+      $\Lie(G / H) = \g / \mathfrak{h}$.
+      Conversely, if $H$ is a closed
+      Lie subgroup such that
+      $H, G$ are connected and
+      $\mathfrak{h} = T_1 H$ is an ideal,
+      then $H$ is normal.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  (1) If $x \in T_1 H$, then we have
+  $\exp(tx) \in H$ for all $t \in \K$.
+  Then using $\lambda(x, y)$ as the
+  commutator implies that
+  $[x, y] \in \mathfrak{h}$ for
+  $x, y \in \mathfrak{h}$.
+
+  (2) If $H$ is a normal closed
+  Lie subgroup, then we have
+  \[
+    \exp(x) \exp(y) \exp(-x) \in H
+  \]
+  for all $x \in \g$ and $y \in \mathfrak{h}$.
+  So $[x, y] \in \mathfrak{h}$, i.e.
+  $\mathfrak{h}$ is an ideal.
+  If $\mathfrak{h}$ is an ideal, then
+  \[
+    \Ad_{\exp(x)} \mathfrak{h}
+    \subseteq \mathfrak{h}
+    \quad \text{for all $x \in \g$}
+  \]
+  since $\Ad_{\exp(x)} = \exp(\ad_x)$.
+  Since $g \exp(y) g^{-1} = \exp(\Ad_g y)$
+  for all $y \in \mathfrak{h}$
+  and $g \in G$, we have
+  \[g \exp(y) g^{-1} \in H,\]
+  i.e. we have
+  $g h g^{-1} \in H$ for all $h \in H$.
+  Thus $H$ is normal.
+\end{proof}
+
+\section{The Lie Algebra of Diffeomorphisms}
+
+\begin{definition}
+  Let $M$ be a manifold. Then
+  $\Diff(M)$ is the
+  \emph{group of diffeomorphisms}
+  of $M$.
+\end{definition}
+
+\begin{remark}
+  Note that $\Diff(M)$ is
+  \emph{not} a Lie group, since it
+  is infinite-dimensional. However,
+  we can still think of a ``Lie algebra''
+  in this setting. Let
+  $\varphi^t : M \to M$ be a 1-parameter
+  family of diffeomorphisms.
+  Then $\phi^t(m)$ for $m \in M$
+  defines a curve in $M$.
+  Taking its derivative, we have
+  \[
+    \left.\frac{d}{dt}\right|_{t = 0} \varphi^t(m)
+      \in T_m M.
+  \]
+  If we look at all $m \in M$, we
+  get a vector field $\left.\frac{d}{dt}\right|_{t = 0} \varphi^t$ on $M$.
+\end{remark}
+
+\begin{definition}
+  Define
+  the \emph{Lie algebra of diffeomorphisms} to be
+  $\Lie(\Diff(M)) = \Vect(M)$.
+\end{definition}
+
+\begin{remark}
+  For $\xi \in \Vect(M)$,
+  $\exp(t\xi)$ generates a 1-parameter
+  family of diffeomorphisms with
+  derivative $\xi$ at $t = 0$. So
+  we get a differential equation
+  \[
+    \left.\frac{d}{dt}\right|_{t = 0} \varphi^t(m)
+      = \xi(m),
+  \]
+  which defines a time flow $\Phi^t$
+  for $\xi$.
+  Then we can define 
+  $\exp(t \xi) = \Phi^t_{\xi}$.
+\end{remark}
+
+\begin{prop}\label{prop:commutator}
+  We have the following:
+  \begin{enumerate}
+    \item Let $\xi, \eta \in \Vect(M)$.
+      There exists a unique vector
+      field $[\xi, \eta]$ such that
+      \[
+        \Phi^t_{\xi}
+        \Phi^s_{\eta}
+        \Phi^{t}_{-\xi}
+        \Phi^{s}_{-\eta}
+      = \Phi^{ts}_{[\xi, \eta]} + \dots.
+      \]
+    \item The commutator defines a
+      structure of a Lie algebra on
+      $\Vect(M)$.
+    \item $[\xi, \eta] = \left.\frac{d}{dt}\right|_{t = 0} (\Phi^t_{\xi})_* \eta$,
+        and $\partial_{[\xi, \eta]} f = (\partial_\eta \partial_\xi - \partial_\xi \partial_\eta) f$
+        satisfies
+        \[
+          \left[\sum_i f_i \partial_i, \sum_i g_i \partial_i\right]
+          = \sum_{i, j} (g_i \partial_i f_j - f_i \partial_i g_j) \partial_j.
+        \]
+  \end{enumerate}
+\end{prop}
+
+\begin{remark}
+  The minus sign in (3)
+  is since $\Phi : M \to M$ acts on $f$
+  by $(\Phi f)(m) = f(\Phi^{-1}(m))$.
+\end{remark}
+
+\begin{example}
+  For $x \mapsto x + t$, we have
+  $\Phi^t f(x) = f(x - t)$ and
+  \[
+    \partial_x f
+    = -\left.\frac{d}{dt}\right|_{t = 0} \Phi^t f.
+  \]
+\end{example}
+
+\begin{theorem}
+  Let $G$ be a finite-dimensional
+  Lie group action on $M$ and let
+  $\rho : G \to \Diff(M)$.
+  \begin{enumerate}
+    \item This action defines a
+      linear map $\rho_* : \g \to \Vect(M)$.
+    \item $\rho_*[x, y] = [\rho_* x, \rho_* y]$, where
+      the right-hand side is the commutator
+      of vector fields.
+  \end{enumerate}
+\end{theorem}
+
+\begin{example}
+  Let $\GL(n, \R)$ act on $\R^n$.
+  Let $a \in \gl(n, \R)$ and
+  $\Phi^t_a = e^{ta}$. Then for
+  $\vec{x} \in \R^n$,
+  \[
+    \left. \frac{d}{dt}\right|_{t = 0}
+      \Phi^t_a f(\vec{x})
+      = \left. \frac{d}{dt}\right|_{t = 0}
+        f(e^{-ta} \vec{x})
+      = \left. \frac{d}{dt}\right|_{t = 0}
+        f(\vec{x} - t a \vec{x} + \dots)
+        = - \sum_{i, j} a_{i, j} x_j \partial_{x_i} f(\vec{x}).
+  \]
+  Check as an exercise that
+  $\rho_*$ maps
+  $a \mapsto - a_{i, j} x_j \partial_{x_i}$
+  for matrices, which matches
+  the above.
+\end{example}
