@@ -1,0 +1,370 @@
+\chapter{Oct.~8 --- Stabilizers and Center}
+
+\section{Stabilizers}
+
+\begin{prop}
+  Consider the left action of $G$
+  on itself: $L_g h = gh$. Then for
+  all $x \in \g = \Lie(G)$, there is a
+  corresponding vector field
+  $\xi = L_* x \in \Vect(G)$
+  which
+  is right-invariant
+  and satisfies $\xi(1) = x$.
+\end{prop}
+
+\begin{proof}
+  The curve $\exp(tx)$ lies in
+  $G$ and
+  \[
+    L_* x(h)
+    = \left.\frac{d}{dt}\right|_{t = 0}
+      (\exp(tx) h)
+    = x h,
+  \]
+  which is a right-invariant vector
+  field.
+\end{proof}
+
+\begin{corollary}
+  $\g = \Lie(G)$ is isomorphic to
+  the Lie algebra of right-invariant
+  vector fields.
+\end{corollary}
+
+\begin{theorem}\label{thm:stabilizer}
+  Let $G$ be a (real or complex)
+  Lie group acting on a manifold $M$
+  by $\rho$.
+  Then
+  \begin{enumerate}
+    \item $G_m = \{g \in G : gm = m\}$
+      is a closed Lie subgroup
+      with Lie algebra
+      $\mathfrak{h} = \{x \in \g : \rho_*(x)(m) = 0\}$,
+      where $\rho_*(x)$ is the
+      vector field (generator)
+      corresponding to $x$.
+    \item The map $G / G_m \to M$
+      is an immersion. In particular,
+      $\mathcal{O}_m$ is an immersed submanifold.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  (1) We have to show that there
+  is some neighborhood $U$ around $1$
+  in $G$ such that
+  $U \cap G_m$ is a submanifold
+  with tangent space $T_1 G_m = \mathfrak{h}$.
+  Note the following:
+  \begin{enumerate}[(i)]
+    \item $\mathfrak{h}$ is closed
+      under the commutator
+      (the vector field commutator)
+    \item $\xi = \rho_*(x) \in \mathfrak{h}$
+      vanishes at $m$, so
+      $\rho(\exp(tx))(m) = \Phi_\xi^t(m) = m$, so
+      $\exp(tx) \in G_m$.
+  \end{enumerate}
+  Write $\g = \mathfrak{h} \oplus \mathfrak{u}$
+  as vector spaces.
+  Then $\rho_* : \g \to T_m M$ has
+  $\ker \rho_* = \mathfrak{h}$, so
+  $\rho_*|_\mathfrak{u}$ is injective.
+  Thus the map
+  \begin{align*}
+    \mathfrak{u} &\longrightarrow M \\
+    y &\longmapsto \rho(\exp(y))(m)
+  \end{align*}
+  is injective in some neighborhood
+  of $0$ in $\mathfrak{u}$ by
+  the implicit function theorem, so
+  $\exp(y) \in G_m$ if and only if
+  $y = 0$. So in a small neighborhood
+  of $1$, we can write any $g \in G$
+  as
+  \[
+    g = \exp(y) \exp(x), \quad
+    y \in \mathfrak{u}, x \in \mathfrak{h}
+  \]
+  by the inverse function theorem. Then
+  we have
+  \[
+    gm = \exp(y) \exp(x) m
+    = \exp(y) m,
+  \]
+  so $g \in G_m$ if and only if
+  $g \in \exp(\mathfrak{h})$ (elements
+  of this kind generate the submanifold).
+
+  (2) We have seen that
+  $T_1(G / G_m) \cong \g / \mathfrak{h} \cong \mathfrak{u}$,
+  so the injectivity of
+  $\rho_* : \mathfrak{u} \to T_m M$
+  shows that the map
+  $\rho : G / G_m \to M$ is an immersion,
+  as desired.
+\end{proof}
+
+\begin{corollary}
+  Let $f : G_1 \to G_2$ be a morphism
+  of (real or complex) Lie groups
+  and $f_*$ the induced map
+  of Lie algebras. Then
+  $\ker f$ is a closed Lie subgroup
+  with Lie algebra
+  $\ker f_*$, and the map
+  $G_1 / {\ker f} \to G_2$ is an
+  immersion. If $\im f$ is a
+  submanifold, then we have an isomorphism
+  $\im f \cong G_1 / {\ker f}$.
+\end{corollary}
+
+\begin{proof}
+  Let $G_1$ act on $G_2$ by
+  $\rho(g) h = f(g) h$ for
+  $g \in G_1$, $h \in G_2$.
+  The stabilizer of $1$ is exactly
+  $\ker f$, so it is a closed Lie
+  subgroup by Theorem
+  \ref{thm:stabilizer}. The rest
+  also follows from
+  Theorem \ref{thm:stabilizer}.
+\end{proof}
+
+\begin{corollary}
+  Let $V$ be a representation of
+  $G$ and $v \in V$. Then the
+  stabilizer $G_v$ is a closed Lie
+  subgroup in $G$ with
+  Lie algebra
+  $\{x \in \g : x v = 0\}$.
+\end{corollary}
+
+\begin{example}
+  Let $V$ be a vector space over
+  $\K$ and $B$ a bilnear form on $V$.
+  Then
+  \[
+    \OO(V, B)
+    = \{
+      g \in \GL(V) :
+      B(gv, gw) = B(v, w) \text{ for all } v, w \in V
+    \}
+  \]
+  has Lie algebra
+  \[
+    \mathfrak{o}(V, B)
+    = \{
+      x \in \gl(V) :
+      B(xv, w) + B(v, xw) = 0
+    \}.
+  \]
+  We claim that $\OO(V, B)$ is
+  always a Lie group with such Lie
+  algebra: Let $G$ act on the space
+  of bilinear forms by
+  $g F(v, w) = F(g^{-1} v, g^{-1} w)$,
+  then $\OO(V, B)$ is the stabilizer
+  of $B$.
+\end{example}
+
+\begin{example}
+  Let $A$ be a finite-dimensional
+  associative algebra with multiplication
+  $\mu : A \times A \to A$, and define
+  \[
+    \Aut(A) =
+    \{
+      g \in \GL(A) : 
+      \mu(ga, gb) = g \mu(a, b) \text{ for all } a, b \in A
+    \}.
+  \]
+  We claim that $\Aut(A)$ is a
+  Lie group with Lie algebra
+  \[
+    \Der(A)
+    = \{
+      x \in \gl(A) :
+      \mu(xa, b) + \mu(a, xb)
+      = x \mu(a, b) \text{ for all } a, b \in A
+    \}.
+  \]
+  Let $W$ be the space of all
+  linear maps $A \otimes A \to A$, and
+  let $\GL(A)$ acts on $W$ by
+  \[
+    (gf)(a \otimes b)
+    = gf(g^{-1} a \otimes g^{-1} b).
+  \]
+  Then $\Aut(A)$ is exactly the
+  stabilizer $G_\mu$. The same
+  argument shows that
+  \[
+    \Aut(\g)
+    = \{
+      g \in \GL(\g)
+      : [ga, gb] = g[a, b]
+      \text{ for all } a, b \in \g
+    \}
+  \]
+  is a Lie group with Lie algebra
+  \[
+    \Der(\g)
+    = \{
+      x \in \gl(\g) :
+      [xa, b] + [a, xb] = x[a, b]
+      \text{ for all } a, b \in \g
+    \}.
+  \]
+  Note that $x$ could be $\ad_c$
+  for some $c \in \g$, these are
+  called the \emph{inner derivations}.
+\end{example}
+
+\section{Center}
+
+\begin{definition}
+  Let $\g$ be a Lie algebra. The
+  \emph{center} of $\g$ is
+  \[
+    \mathfrak{z}(\g)
+    = \{
+      x \in \g : [x, y] = 0
+      \text{ for all } y \in \g
+    \}.
+  \]
+\end{definition}
+
+\begin{remark}
+  The center
+  $\mathfrak{z}(\g)$ is an ideal in $\g$.
+\end{remark}
+
+\pagebreak
+
+\begin{theorem}
+  Let $G$ be a connected Lie group.
+  Then its center $\mathcal{Z}(G)$
+  is a closed Lie subgroup with
+  Lie algebra $\mathfrak{z}(\g)$. If
+  $G$ is not connected, then
+  $\mathcal{Z}(G)$ is still a closed Lie
+  subgroup, however its
+  Lie algebra is smaller than
+  $\mathfrak{z}(\g)$.
+\end{theorem}
+
+\begin{proof}
+  Let $g \in G$ and $x \in \g$. Note
+  that
+  \[
+    \exp(\Ad_g tx)
+    = g \exp(tx) g^{-1},
+  \]
+  so $g$ commutes with $\exp(tx)$
+  if and only if $\Ad_g x = x$.
+  For connected Lie groups,
+  the elements
+  $\exp(tx)$ for all $x \in \g$
+  generate the entire group, so
+  $g \in \mathcal{Z}(G)$ if
+  and only if $\Ad_g x = x$ for all
+  $x \in \g$. Thus we have
+  $\mathcal{Z}(G) = \ker \Ad$
+  for the adjoint
+  action
+  $\Ad : G \to \GL(\g)$.
+\end{proof}
+
+\begin{example}
+  $\OO(2)$ and $\SO(2)$ have the
+  same Lie algebra, but
+  $\OO(2)$ has center
+  $\{\pm I\}$.
+\end{example}
+
+\begin{remark}
+  Call $G / \mathcal{Z}(G)$ the
+  \emph{adjoint group} associated
+  to $G$. Denote
+  \[
+    \Ad G = G / \mathcal{Z}(G)
+    = \im (\Ad : G \to \GL(\g))
+    \quad\text{and} \quad
+    \ad \g
+    = \g / \mathfrak{z}(\g)
+    = \im (\ad : \g \to \gl(\g)).
+  \]
+\end{remark}
+
+\begin{example}
+  Consider $\SL(2, \R)$. Then
+  $\Ad(\SL(2, \R)) = \SL(2, \R) / \{\pm I\} = \PSL(2, \R)$.
+\end{example}
+
+\section{The Baker-Campbell-Hausdorff Formula}
+
+\begin{theorem}
+  Let $x, y \in \g$ such that
+  $[x, y] = 0$. Then
+  \[
+    \exp(x) \exp(y)
+    = \exp(x + y)
+    = \exp(y) \exp(x).
+  \]
+\end{theorem}
+
+\begin{proof}
+  Let $\xi, \eta$ be the right-invariant
+  vector fields corresponding to $x, y$,
+  and $\Phi^t_\xi, \Phi^t_\eta$
+  the corresponding time flows.
+  Then the formula
+  \[
+    \Phi^t_{\xi}
+    \Phi^s_{\eta}
+    \Phi^{-t}_{\xi}
+    \Phi^{-s}_{\eta}
+    = ts[\xi, \eta] + \cdots
+  \]
+  implies that $[\xi, \eta] = 0$
+  since this is an isomorphism of
+  Lie algebras. Now observe that
+  \[
+    (\Phi^s_{\xi})_*
+    \left.\frac{d}{dt}\right|_{t = 0}
+    (\Phi^t_{\eta})_* \eta = 0,
+  \]
+  so $\frac{d}{dt} (\Phi^t_{\eta})_* \eta = 0$, which
+  implies that
+  $(\Phi^t_{\eta})_* \eta = \eta$ since
+  the flow of $\xi$ preserves $\eta$.
+  Then
+  \[
+    \Phi^t_{\xi} \Phi^s_{\eta}
+    \Phi^{-t}_{\xi}
+    = \Phi^s_{\eta},
+  \]
+  and applying this to $1$ gives
+  $\exp(tx) \exp(sy) \exp(-tx) = \exp(sy)$.
+\end{proof}
+
+\begin{theorem}[Baker-Campbell-Hausdorff formula]
+  For small enough $x, y \in \g$, we have
+  \[
+    \exp(x) \exp(y)
+    \exp(\mu(x, y)),
+  \]
+  where $\mu$ is given by
+  \[
+    \mu(x, y) = x + y + \sum_{n \ge 2} \mu(x, y)
+    = x + y + \frac{1}{2} [x, y]
+    + \frac{1}{12} ([x, [x, y]] + [y, [y, x]])
+    + \cdots.
+  \]
+  In the above, the $\mu_n$ are
+  degree-$n$ commutators
+  of $x$ and $y$.
+\end{theorem}
