@@ -1,0 +1,420 @@
+\chapter{Oct.~13 --- Fundamental Theorems of Lie Theory}
+
+\section{Fundamental Theorems of Lie Theory}
+\begin{remark}
+  We know the following about
+  Lie theory so far:
+  \begin{enumerate}
+    \item Every (real or complex) Lie
+      group $G$ defines a Lie algebra
+      $\g = \Lie(G)$, and every morphism
+      $\varphi : G_1 \to G_2$ gives a
+      morphism $\varphi_* : \g_1 \to \g_2$.
+      The map $\Hom(G_1, G_2) \to \Hom(\g_1, \g_2)$
+      is injective.
+    \item Every Lie subgroup $H \subseteq G$
+      defines a Lie subalgebra
+      $\mathfrak{h} \subseteq \g$.
+    \item The group law can be recovered
+      from $[\cdot, \cdot]$ on $\g$.
+  \end{enumerate}
+  Now we want to understand the following:
+  \begin{enumerate}
+    \item Given a morphism
+      $\Lie(G_1) = \g_1 \to \g_2 = \Lie(G_2)$,
+      can we lift it to a morphism
+      $G_1 \to G_2$?
+
+      We will see that the answer is
+      no in general.
+    \item Given a Lie subalgebra
+      $\mathfrak{h} \subseteq \g$,
+      does there always exist a subgroup
+      $H$ such that $\mathfrak{h} = \Lie(H)$?
+
+      We will see that the answer is
+      yes.
+    \item Can every finite-dimensional
+      Lie algebra be obtained as
+      the Lie algebra of a Lie group?
+  \end{enumerate}
+\end{remark}
+
+\begin{example}
+  Let $G = S^1 = \R / \Z$ and
+  $G_2 = \R$. Then $\g_1 = \g_2 = \R$.
+  Consider the identity map
+  \[\id : \g_1 \to \g_2.\]
+  If this lifted to a morphism $G_1 \to G_2$, then
+  we must have $\theta \mapsto \theta$.
+  But $f(\Z) = 0$, so this is impossible.
+  Thus morphisms
+  $\g_1 \to \g_2$ cannot always be lifted
+  to morphisms $G_1 \to G_2$ in general.
+\end{example}
+
+\begin{theorem}
+  For any (real or complex) Lie group
+  $G$, there is a bijection between
+  connected Lie subgroups $H \subseteq G$
+  and Lie subalgebras
+  $\mathfrak{h} \subseteq \g$ given by
+  $H \mapsto \mathfrak{h} = \Lie(H) = T_1 H$.
+\end{theorem}
+
+\begin{theorem}
+  If $G_1, G_2$ are Lie groups and
+  $G_1$ is simply connected, then
+  \[
+    \Hom(\g_1, \g_2) = \Hom(G_1, G_2),
+  \]
+  where $\g_i = \Lie(G_i)$ for $i = 1, 2$.
+\end{theorem}
+
+\begin{theorem}\label{thm:lie-3rd}
+  Any finite-dimensional (real or complex)
+  Lie algebra is isomorphic to the
+  Lie algebra of a (real or complex)
+  Lie group.
+\end{theorem}
+
+\begin{corollary}
+  For any (real or complex)
+  finite-dimensional Lie algebra
+  $\g$, there exists a unique (up to
+  isomorphism) connected and simply
+  connected (real or complex) Lie group $G$
+  with $\Lie(G) = \g$. Any other connected
+  Lie group $G'$ with Lie algebra
+  $\g$ must be of the form
+  $G / Z'$ for some discrete central
+  subgroup $Z' \subseteq Z \subseteq G$.
+\end{corollary}
+
+\begin{proof}
+  We sketch the proof. Theorem
+  \ref{thm:lie-3rd} says that there is a
+  Lie group $\widetilde{G}$ with $\Lie(\widetilde{G}) = \g$.
+  Take a neighborhood of the identity, and
+  construct the universal cover to get
+  $G$. Then for any other
+  $G'$, there is a covering map
+  $G \to G'$. One can check that
+  the deck transformations
+  are a normal subgroup and
+  that they form a
+  subgroup of the center $Z$.
+  Then we may take $Z' = \pi_1(G')$.
+\end{proof}
+
+\begin{corollary}
+  The categories of simply connected
+  finite-dimensional Lie groups and
+  Lie algebras are equivalent.
+\end{corollary}
+
+\section{Complex and Real Forms}
+
+\begin{definition}
+  Let $\g$ be a real Lie algebra.
+  Its \emph{complexification} is
+  \[
+    \g_\C = \g \otimes_\R \C
+    = \g \oplus i \g,
+  \]
+  where the commutator extends naturally
+  from $\g$ to $\g_\C$.
+\end{definition}
+
+\begin{example}
+  Consider the following:
+  \begin{enumerate}
+    \item For $\g = \mathfrak{sl}(n, \R)$,
+      $\g_\C = \mathfrak{sl}(n, \C)$.
+    \item For $\g = \mathfrak{u}(n)$
+      (the skew-Hermitian matrices),
+      $\g_\C = \gl(n, \C)$ as
+      $i \g$ are the Hermitian
+      matrices.
+  \end{enumerate}
+\end{example}
+
+\begin{definition}
+  Let $G$ be a connected complex Lie
+  group and $\g = \Lie(G)$. If
+  $K \subseteq G$ be a closed real Lie
+  subgroup such that $\mathfrak{k} = \Lie(K)$
+  is a \emph{real form} of $\g$ (meaning
+  that $\mathfrak{k}_\C = \g$), then
+  $K$ is called a \emph{real form} of $G$.
+\end{definition}
+
+\begin{remark}
+  It can be shown that if
+  $\g = \Lie(G)$ where $G$ is simply
+  connected and complex, then for any
+  form $\mathfrak{k} \subseteq \g$,
+  one can obtain a real form
+  $K \subseteq G$ with
+  $\Lie(K) = \mathfrak{k}$.
+
+  It is not true that one can represent
+  any real Lie group as a subgroup of some
+  complex Lie group, an example is
+  the universal cover of $\SL(2, \R)$.
+\end{remark}
+
+\begin{example}
+  We will study
+  $\mathfrak{so}(3, \R)$,
+  $\mathfrak{su}(2)$, and
+  $\mathfrak{sl}(2, \C)$.
+  Recall that $\mathfrak{so}(3, \R)$
+  has a basis
+  \[
+    J_x = \begin{pmatrix}
+      0 & 0 & 0 \\
+      0 & 0 & -1 \\
+      0 & 1 & 0
+    \end{pmatrix}, \quad
+    J_y = \begin{pmatrix}
+      0 & 0 & 1 \\
+      0 & 0 & 0 \\
+      -1 & 0 & 0
+    \end{pmatrix}, \quad
+    J_z = \begin{pmatrix}
+      0 & -1 & 0 \\
+      1 & 0 & 0 \\
+      0 & 0 & 0
+    \end{pmatrix}
+  \]
+  with commutator relations
+  $[J_{\{ x}, J_y] = J_{z\}}$ (the brackets
+  mean that $x, y, z$ can be replaced
+  with any cyclic permutations).
+  A basis of $\mathfrak{su}(2)$ is
+  given by the \emph{Pauli matrices}
+  times $i$:
+  \[
+    i \sigma_1 =
+    \begin{pmatrix}
+      0 & i \\
+      i & 0
+    \end{pmatrix}, \quad
+    i \sigma_2 =
+    \begin{pmatrix}
+      0 & 1 \\
+      -1 & 0
+    \end{pmatrix}, \quad
+    i \sigma_3 =
+    \begin{pmatrix}
+      i & 0 \\
+      0 & -i
+    \end{pmatrix}
+  \]
+  with commutator relations
+  $[i \sigma_{\{ 1}, i \sigma_2] = -2 i \sigma_{3\}}$.
+  Note that there is an isomorphism
+  $\mathfrak{su}(2) \cong \mathfrak{so}(3, \R)$
+  by $i \sigma_1 \mapsto -2 J_x$,
+  $i \sigma_2 \mapsto -2 J_y$,
+  $i \sigma_3 \mapsto -2 J_z$.
+  A basis for $\mathfrak{sl}(2, \C)$
+  is given by
+  \[
+    e = \begin{pmatrix}
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix}, \quad
+    f = \begin{pmatrix}
+      0 & 0 \\
+      1 & 0
+    \end{pmatrix}, \quad
+    h = \begin{pmatrix}
+      1 & 0 \\
+      0 & -1
+    \end{pmatrix}
+  \]
+  with commutation relations
+  $[h, e] = 2e$, $[h, f] = -2f$,
+  $[e, f] = h$.
+  One can check as an exercise that
+  \[(\mathfrak{su}(2))_\C \cong (\mathfrak{so}(3, \R))_\C \cong \mathfrak{so}(3, \C) \cong \mathfrak{sl}(2, \C).\]
+  The $h$  element will play a similar
+  role to the Jucys-Murphy's elements
+  in representation theory.
+\end{example}
+
+\section{Representations of Lie Groups and Lie Algebras}
+
+\begin{definition}
+  Recall the definition of a representation:
+  \begin{enumerate}
+    \item A \emph{representation} of a
+      Lie group $G$ is a vector space $V$
+      with a morphism of Lie groups
+      \[\rho : G \to \GL(V).\]
+    \item A \emph{representation} of 
+      of a Lie algebra is a vector space
+      $V$ with a morphism of Lie algebras
+      \[
+        \rho : \g \to \gl(V).
+      \]
+  \end{enumerate}
+  A \emph{morphism} between two
+  representations $V, W$ of $G$ is a
+  map $f : V \to W$ such that
+  \[
+    f \rho(g) = \rho(g) f.
+  \]
+  Similarly one defines \emph{morphisms}
+  between representations of Lie algebras.
+  Denote the set of morphisms of
+  representations by
+  $\Hom_G(V, W)$ and $\Hom_\g(V, W)$,
+  these are also known as \emph{intertwining
+  operators}.
+\end{definition}
+
+\begin{theorem}\label{thm:lie-rep-corr}
+  Let $G$ be a (real or complex) Lie group
+  and $\g = \Lie(G)$. Then
+  \begin{enumerate}
+    \item Every representation
+      $\rho : G \to \GL(V)$ defines a
+      representation $\rho_* : \g \to \gl(V)$,
+      and every morphism of representations
+      of $G$ is a morphism of representations
+      of $\g$.
+    \item If $G$ is simply-connected and
+      connected, then $\rho \mapsto \rho_*$
+      gives an equivalence of the
+      categories of representations
+      of $G$ and representations of $\g$.
+      In particular, every representation
+      of $\g$ can be lifted to a
+      representation of $G$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+  Note the following:
+  \begin{enumerate}
+    \item The representations of
+      $\mathfrak{su}(2)$ is the same
+      set as the representations
+      of $\SU(2)$ (since $\SU(2) \cong S^3$
+      is simply-connected).
+    \item For $G$ simply-connected,
+      Theorem \ref{thm:lie-rep-corr}
+      can be used to describe representations
+      of $\widetilde{G} = G / \widetilde{Z}$
+      for $\widetilde{Z} \subseteq Z$
+      (where $Z$ is the center of $G$).
+      These are the representations of $G$
+      such that $\rho(\widetilde{Z}) = \id$.
+  \end{enumerate}
+\end{remark}
+
+\begin{lemma}\label{lem:real-to-complex-rep}
+  Let $\g$ be a real Lie algebra and
+  $\g_\C$ its complexification. Then any
+  complex representation of $\g$ has a
+  unique structure of a representation
+  of $\g_\C$. Moreover,
+  \[
+    \Hom_\g(V, W)
+    = \Hom_{\g_\C}(V, W).
+  \]
+  In particular, the categories of
+  complex representations of $\g$ and
+  $\g_\C$ are equivalent.
+\end{lemma}
+
+\begin{proof}
+  Let $\rho : \g \to \gl(V)$ be a
+  representation. For $x, y \in \g$, define
+  $\rho$ on $x + iy \in \g_\C$ by
+  \[
+    \rho(x + iy) = \rho(x) + i\rho(y).
+  \]
+  One can check that this gives the
+  desired representation of
+  $\g_\C$.
+\end{proof}
+
+\begin{example}
+  Using
+  Lemma \ref{lem:real-to-complex-rep},
+  we see that the categories of
+  complex representations of
+  $\SL(2, \C)$, $\mathfrak{sl}(2, \C)$, $\SU(2)$, $\mathfrak{su}(2)$
+  are all equivalent.
+\end{example}
+
+\begin{remark}
+  We can define the following
+  operations on representations:
+  \begin{enumerate}
+    \item Let $W \subseteq G$ be a
+      subrepresentation of $G$ or $\g$
+      (meaning that $W$ is invariant).
+      Then we can construct the
+      \emph{quotient representation}
+      $V / W$.
+    \item The \emph{dual}, the
+      \emph{direct sum}
+      and the \emph{tensor product}.
+  \end{enumerate}
+\end{remark}
+
+\begin{lemma}
+  Let $V, W$ be representations of $G$
+  (resp. of $\Lie(G) = \g$). There is a
+  canonical structure of a representation
+  on $V^*$, $V \oplus W$, and
+  $V \otimes W$.
+\end{lemma}
+
+\begin{proof}
+  The direct sum is easy to define.
+  For the tensor product, one defines
+  \[
+    \rho(g)(v \otimes w)
+    = (\rho(g)v) \otimes (\rho(g)w)
+  \]
+  for $g \in G$.
+  If $x \in \g$, then we can choose
+  a curve $\gamma$ such that
+  $\left.\frac{d}{dt}\right|_{t = 0} \gamma(t) = x$
+  and $\gamma(0) = 1$,
+  and define
+  \begin{align*}
+    \rho(x)(v \otimes w)
+    &= \left.\frac{d}{dt}\right|_{t = 0}
+    (\rho(\gamma(t)) v \otimes \rho(\gamma(t)) w) \\
+    &= \rho(\dot{\gamma}(0))v \otimes \rho(\gamma(0))w
+    + \rho(\gamma(0))v \otimes \rho(\dot{\gamma}(0))w \\
+    &= \rho(x)v \otimes w + v \otimes \rho(x)w \\
+    &= (\rho(x) \otimes \id + \id \otimes \rho(x))(v \otimes w).
+  \end{align*}
+  For the dual, let
+  $\langle \cdot, \cdot \rangle : V \otimes V^* \to \C$
+  be the natural pairing. Then for
+  $g \in G$, we need
+  \[
+    \langle \rho(g) v, \rho(g) v^* \rangle
+    = \langle v, v^* \rangle,
+  \]
+  so we can define
+  $\rho_{V^*}(g) = \rho(g^{-1})^T$.
+  On the level of Lie algebras, we need
+  \[
+    \langle \rho(x) v, v^* \rangle
+    + \langle v, \rho(x) v^* \rangle = 0,
+  \]
+  so we can define
+  $\rho_{V^*}(x) = -\rho(x)^T$. One can
+  check as an exercise that these
+  definitions work.
+\end{proof}
