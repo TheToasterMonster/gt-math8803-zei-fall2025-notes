@@ -1,0 +1,446 @@
+\chapter{Oct.~15 --- Representations of Lie Groups}
+
+\section{More Examples of Representations}
+
+\begin{example}
+  Let $V, W$ be representations of
+  $G$ or $\Lie(G)$. Then
+  \begin{enumerate}
+    \item $\End(V) \cong V \otimes V^*$
+      is a representation, with
+      $G$-action
+      \[
+        g : A \mapsto
+        \rho_V(g) A \rho_V(g)^{-1}
+      \]
+      for $g \in G$ and $\g$-action
+      $x : A \mapsto \rho_V(x) A - A \rho_V(x)$
+      for $x \in \g$.
+    \item $\Hom(V, W)$ is a representation.
+      Write down the $G$- and $\g$-actions
+      as an exercise.
+    \item The space of bilinear forms
+      is a representation with
+      $G$-action $g B(v, w) = B(g^{-1} v, g^{-1} w)$.
+  \end{enumerate}
+\end{example}
+
+\section{Invariants}
+
+\begin{definition}
+  Let $V$ be a representation of a Lie
+  group $G$. Then $v \in V$ is called an
+  \emph{invariant} of the Lie group action
+  if $\rho(g) v = v$ for all $g \in G$.
+  The space of invariants is denoted by $V^G$.
+  For a Lie algebra $\g$, we say
+  $v$ is an \emph{invariant} if
+  $\rho(x) v = 0$ for all $x \in \g$.
+  Similarly, $V^\g$ denotes the
+  space of invariants.
+\end{definition}
+
+\begin{prop}
+  If $G$ is connected, then
+  $V^G = V^\g$ where
+  $\g = \Lie(G)$.
+\end{prop}
+
+\begin{example}
+  Let $V, W$ be representations. Then
+  $G$ acts on
+  $\Hom(V, W)$ by
+  \[
+    g : A \mapsto \rho_W(g) A \rho_V(g)^{-1},
+  \]
+  and we have $(\Hom(V, W))^G = \Hom_G(V, W)$.
+  In particular, $V^G = (\Hom(\C, V))^G = \Hom_G(\C, V)$,
+  where $\C$ is the trivial representation
+  of $G$.
+\end{example}
+
+\begin{example}
+  Let $B$ be a bilinear form. The space of
+  bilinear forms on $V \otimes W$ form
+  a representation of $G$ if $V, W$
+  are representations of $G$. The invariants
+  are those $B$ such that
+  $B(g v, g w) = B(v, w)$.
+\end{example}
+
+\begin{prop}
+  A bilinear form $B$ is an invariant if
+  and only if $v \mapsto B(v, \cdot)$ is a
+  morphism of representations.
+\end{prop}
+
+\section{Irreducible Representations}
+
+\begin{definition}
+  A representation $V$ of $G$ or $\g = \Lie(G)$
+  is called \emph{irreducible} if it has
+  no subrepresentations except for
+  $V$ and $\{0\}$. Otherwise, we say that
+  $V$ is \emph{reducible}.
+\end{definition}
+
+\begin{example}
+  $\SL(n, \C)$ acting
+  on $\C^n$ is irreducible.
+\end{example}
+
+\begin{remark}
+  Note that if $W$ is a subrepresentation
+  of $V$, then we have an exact sequence
+  \[
+    0 \longrightarrow W \longrightarrow V
+    \longrightarrow V/W \longrightarrow 0.
+  \]
+  Do we have $V = W \oplus V/W$?
+  If this is true for every $W$, then $V$ is \emph{completely reducible} (see below).
+\end{remark}
+
+\begin{definition}
+  A representation $V$ is called \emph{completely reducible}
+  if
+  $V \cong \bigoplus_i V_i$
+  for $V_i$ irreducible.
+\end{definition}
+
+\begin{remark}
+  In general, we can write a
+  completely reducible representation
+  $V$ as
+  \[
+    V \cong \bigoplus_i n_i V_i,
+  \]
+  where the $n_i$ are multiplicities,
+  i.e. contributions of isomorphic
+  summands.
+\end{remark}
+
+\begin{example}
+  Let $G = \R$ with $\g = \R$. Then a
+  representation of $V$ is a linear
+  map $\R \to \End(V)$, so it is
+  of the form $t \mapsto tA$ for any
+  element $A \in \End(V)$. On the
+  group level this is $t \mapsto \exp(tA)$.
+  Note that $A$ has some Jordan normal form,
+  so it will not split into
+  irreducibles unless $A$ is diagonalizable.
+\end{example}
+
+\begin{remark}
+  The following are the classic goals
+  of representation theory:
+  \begin{enumerate}
+    \item For a given group $G$, classify
+      all irreducible representations.
+    \item For a given representation $V$
+      of $G$, if it is completely reducible,
+      find the decomposition of $V$ into
+      irreducibles.
+    \item For which Lie groups $G$ are
+      all representations completely
+      reducible?
+  \end{enumerate}
+\end{remark}
+
+\begin{lemma}
+  Let $\rho : G \to \GL(V)$ be a
+  representation of a Lie group $G$
+  (with corresponding Lie algebra
+  representation $\rho_* : \g \to \gl(V)$).
+  Let $A : V \to V$ be a diagonalizable
+  intertwining operator, and let
+  $V_\lambda \subseteq V$ be the eigenspace
+  of $A$ with eigenvalue $\lambda$. Then
+  the following holds for both $G$ and $\g$:
+  \begin{enumerate}
+    \item Each $V_\lambda$ is a
+      subrepresentation.
+    \item As a consequence of (1),
+      $V = \bigoplus_\lambda V_\lambda$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+  Let $V$ be a representation of $G$ and
+  $z \in \mathcal{Z}(G)$ be a
+  central element such that
+  $\rho(z)$ is diagonalizable. Then
+  $V = \bigoplus_\lambda V_\lambda$
+  where $V_\lambda$ is the eigenspace of
+  $\rho(z)$ with eigenvalue $\lambda$.
+\end{lemma}
+
+\begin{example}
+  Let $\GL(n, \C)$ act on $\C^n \otimes \C^n$.
+  Then $P : v \otimes w \mapsto w \otimes v$
+  is an intertwining operator (i.e. it
+  commutes with the action of $G$).
+  Then $S^2 \C^n$ and $\wedge^2 \C^n$
+  are eigenspaces of $P$, so
+  \[
+    \C^n \otimes \C^n =
+    S^2 \C^n \oplus \wedge^2 \C^n,
+  \]
+  but we do not know at this point if
+  these are irreducible.
+\end{example}
+
+\begin{lemma}[Schur's lemma]
+  We have the following:
+  \begin{enumerate}
+    \item If $V$ is a complex irreducible
+      representation of $G$, then the
+      space of intertwining operators if
+      $\Hom_G(V, V) = \C \id$.
+      In other words, any endomorphism of
+      an irreducible representation of $G$
+      is multiplication by a scalar.
+    \item If $V, W$ are non-isomorphic
+      complex irreducible representations,
+      then $\Hom_G(V, W) = 0$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{example}
+  Let $G = \GL(n, \C)$. Then $\C^n$ is an
+  irreducible representation of $G$, so
+  every operator commuting with
+  $\GL(n, \C)$ must be scalar.
+  Thus $\mathcal{Z}(\GL(n, \C)) = \{\lambda \id : \lambda \in \C^\times\}$.
+  Similarly, we can use this to see that
+  $\mathfrak{z}(\gl(n, \C)) = \{\lambda \id : \lambda \in \C\}$
+  for the Lie algebra.
+\end{example}
+
+\pagebreak
+\begin{exercise}
+  Extend the above to all other classical
+  Lie groups.
+\end{exercise}
+
+\begin{corollary}
+  Assume $V$ is a completely reducible
+  representation of a Lie group $G$ (or
+  Lie algebra $\g$). Then we have
+  the following:
+  \begin{enumerate}
+    \item If $V = \bigoplus V_i$ with
+      $V_i$ irreducible and pairwise
+      non-isomorphic, then any intertwining
+      operator $\Phi : V \to V$ is of the
+      form $\Phi = \bigoplus_i \lambda_i \id_{V_i}$.
+    \item If $V = \bigoplus_i n_i V_i = \bigoplus_i (\C^{n_i} \otimes V_i)$,
+      then any intertwining operator
+      $\Phi : V \to V$ is given by
+      \[
+        \Phi = \bigoplus_i (A_i \otimes \id_{V_i}), \quad
+        A_i \in \End(\C^{n_i}).
+      \]
+  \end{enumerate}
+\end{corollary}
+
+\begin{prop}
+  If $G$ is a commutative group
+  (resp. if $\g$ is a commutative Lie algebra),
+  then every irreducible complex representations
+  of $G$ (resp. $\g$) is 1-dimensional.
+\end{prop}
+
+\begin{proof}
+  Note that
+  $\rho(g)$ commutes with the action of
+  $G$ for every $g$, so
+  $\rho(g) \sim \id$.
+\end{proof}
+
+\begin{example}
+  Let $G = \R$ and $\g = \R$. Then
+  a 1-dimensional representation
+  of $\g$ is given by
+  $a \mapsto \lambda a$ for
+  $a \in \g$. Then for $b \in G$, we have
+  $\rho(b) = \exp(\lambda b)$.
+  So $\lambda$ labels representations.
+  For $U(1) = S^1 = \R / \Z$ and
+  $\g = \R$, we have $\rho(a) = 1$ for all
+  $a \in \Z$, so $\rho(a) = \exp(2\pi i k a)$.
+  Here $k$ labels the representations.
+\end{example}
+
+\section{Unitary Representations}
+
+\begin{remark}
+  Recall that for finite groups,
+  every representation is completely
+  reducible.
+\end{remark}
+
+\begin{definition}
+  A complex representation of a real Lie
+  group $G$ is called \emph{unitary}
+  if there exists an invariant inner product
+  (i.e. a Hermitian positive-definite
+  bilinear form)
+  on $V$, i.e.
+  \[(\rho(g) v, \rho(g) w) = (v, w).\]
+  One can make a similar definition for
+  Lie algebras by differentiating.
+\end{definition}
+
+\begin{theorem}\label{thm:unitary}
+  Every unitary representation is
+  completely reducible.
+\end{theorem}
+
+\begin{proof}
+  We induct on dimension. Assume that
+  $V$ is not irreducible. Then
+  we can write
+  $V = W \oplus W^\perp$ for some
+  nontrivial subrepresentation $W$.
+  We claim $W^\perp$ is
+  also a subrepresentation: For
+  $w \in W^\perp$, $v \in W$,
+  \[
+    (gw, v)
+    = (w, g^{-1} v)
+    = 0
+  \]
+  since $g^{-1} v \in W$, so
+  $gw \in W^\perp$. Thus
+  $W^\perp$ is a subrepresentation, and
+  $\dim W,\, \dim W^\perp < \dim V$.
+\end{proof}
+
+\begin{remark}
+  Let $G$ be finite.
+  Recall that if $B(V, W)$ is any inner
+  product on $V$, then we can define
+  \[
+    (v, w) = \frac{1}{|G|} \sum_{g \in G} B(g v, g w),
+  \]
+  which one can check is positive-definite
+  and $G$-invariant. So we get
+  that every complex representation of a
+  finite group is completely reducible.
+  We can apply a similar idea to
+  Lie groups.
+\end{remark}
+
+\section{Compact Lie Groups and Haar Measure}
+
+\begin{definition}
+  A \emph{right Haar measure} on a real
+  Lie group $G$ is a Borel measure $dg$
+  which is invariant under the right
+  action of $G$ on itself, i.e. we have
+  \[
+    \int f(gh)\, dg
+    = \int f(g)\, dg
+  \]
+  for any integrable function $f$ and
+  $h \in G$. One defines a
+  \emph{left Haar measure} similarly.
+\end{definition}
+
+\begin{lemma}\label{lem:1drep}
+  Let $V$ be a 1-dimensional real
+  representation of a compact Lie group $G$.
+  Then for any $g \in G$, we have
+  $|\rho(g)| = 1$.
+\end{lemma}
+
+\begin{proof}
+  If $|\rho(g)| < 1$, then we have
+  $\rho(g)^n \to 0$ as $n \to \infty$.
+  But $\rho(G)$ is a compact subset of
+  $\R^\times$, so it cannot contain
+  a sequence converging to
+  $0$. A similar argument works for
+  $|\rho(g)| > 1$.
+\end{proof}
+
+\begin{theorem}
+  Let $G$ be a real Lie group. Then
+  \begin{enumerate}
+    \item $G$ is orientable. Moreover,
+      the orientation can be chosen such
+      that the right action of $G$ on
+      itself preserves orientation.
+    \item If $G$ is compact, then
+      for a fixed choice of right-invariant
+      orientation on $G$, there exists
+      a unique right-invariant top
+      form $\omega$ such that
+      \[
+        \int_G \omega = 1.
+      \]
+    \item $\omega$ is also left-invariant
+      if $G$ is connected (otherwise it is
+      left-invariant up to sign).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Choose an element in $\bigwedge^n \g^*$
+  where $n = \dim G$. It can be uniquely
+  translated by right-invariance to
+  give a non-vanishing form $\widetilde{\omega}$.
+  Then let
+  \[
+    I = \int_G \widetilde{\omega},
+  \]
+  then $\omega = \widetilde{\omega} / I$
+  gives the desired $\omega$. Now
+  note that $\bigwedge^n \g^*$ is
+  a $1$-dimensional representation of
+  $G$ via the adjoint action.
+  Left-invariance of $\omega$ follows
+  from Lemma \ref{lem:1drep}, and the
+  sign is obtained as follows.
+  Let $i : g \mapsto g^{-1}$ be the
+  inversion map. If $\omega$ is
+  left-invariant, then $i^*(\omega)$ is
+  right-invariant, and
+  $\omega$ and $i^*(\omega)$ are equal
+  up to a sign: $i_* : \g \to \g$ is given
+  by $x \mapsto -x$, so
+  $i^* : \bigwedge^n \g^* \to \bigwedge^n \g^*$
+  is given by $\omega \mapsto (-1)^n \omega$.
+\end{proof}
+
+\begin{theorem}
+  Let $G$ be a compact real Lie group. Then
+  it has a canonical Borel measure $dg$,
+  called the \emph{Haar measure},
+  which is both left and right invariant,
+  invariant under $g \mapsto g^{-1}$, and
+  satisfies
+  \[
+    \int_G dg = 1.
+  \]
+\end{theorem}
+
+\begin{theorem}
+  Any finite-dimensional representation
+  of a compact Lie group is unitary and is
+  thus completely reducible.
+\end{theorem}
+
+\begin{proof}
+  Let $B(v, w)$ be a positive-definite
+  Hermitian inner product. Then
+  one can check
+  \[
+    \overline{B}(v, w)
+    = \int_G B(g v, g w)\, dg
+  \]
+  is unitary, and the representation is
+  completely reducible by Theorem
+  \ref{thm:unitary}.
+\end{proof}
